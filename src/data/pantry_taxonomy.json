@@ -1,0 +1,32 @@
+{
+  "equivalents": {
+    "Petto di pollo a fette": [
+      { "name": "Fesa di tacchino a fette", "unit_multiplier": 1.0, "category": "carne" },
+      { "name": "Bocconcini di tacchino", "unit_multiplier": 1.0, "category": "carne" }
+    ],
+    "Filetto di orata fresca": [
+      { "name": "Filetto di branzino fresco", "unit_multiplier": 1.0, "category": "pesce" },
+      { "name": "Filetto di merluzzo fresco o surgelato", "unit_multiplier": 1.0, "category": "pesce" }
+    ],
+    "Trancio di salmone fresco": [
+      { "name": "Trancio di trota salmonata fresca", "unit_multiplier": 1.0, "category": "pesce" },
+      { "name": "Filetto di sgombro fresco", "unit_multiplier": 1.0, "category": "pesce" }
+    ],
+    "Bresaola della Valtellina IGP": [
+      { "name": "Fesa di tacchino arrosto a fette magra", "unit_multiplier": 1.0, "category": "carne" },
+      { "name": "Prosciutto crudo sgrassato DOP", "unit_multiplier": 1.0, "category": "carne" }
+    ],
+    "Ricotta fresca vaccina": [
+      { "name": "Fiocchi di latte magri", "unit_multiplier": 1.0, "category": "latticini" },
+      { "name": "Quark magro naturale", "unit_multiplier": 1.0, "category": "latticini" }
+    ],
+    "Verza autunnale": [
+      { "name": "Cavolo cappuccio", "unit_multiplier": 1.0, "category": "frutta_verdura" },
+      { "name": "Cavolo verza cuor di bue", "unit_multiplier": 1.0, "category": "frutta_verdura" }
+    ],
+    "Zucca delica a fette": [
+      { "name": "Zucca butternut", "unit_multiplier": 1.0, "category": "frutta_verdura" },
+      { "name": "Carote fresche", "unit_multiplier": 0.8, "category": "frutta_verdura" }
+    ]
+  }
+}
