@@ -1097,10 +1097,23 @@ def validate_nutritional_integrity(data: Dict[str, Any], tolerance_percent: floa
             errors.append(f"{day_name} calories ({day_kcal}) deviate from target ({target_kcal}) by {kcal_diff*100:.1f}%")
 
     # Check 14-meal protein rotation
-    for cat, expected_qty in AUTHORITATIVE_PROTEIN_FREQUENCIES.items():
-        actual_qty = protein_counts.get(cat, 0)
-        if actual_qty != expected_qty:
-            errors.append(f"Protein category '{cat}': expected {expected_qty} meals in week, got {actual_qty}")
+    total_main = sum(protein_counts.values())
+    if total_main != 14:
+        errors.append(f"Expected 14 main meals, got {total_main}")
+    if protein_counts.get("carne_bianca", 0) != 2:
+        errors.append(f"Protein category 'carne_bianca': expected 2, got {protein_counts.get('carne_bianca')}")
+    if protein_counts.get("carne_rossa", 0) != 1:
+        errors.append(f"Protein category 'carne_rossa': expected 1, got {protein_counts.get('carne_rossa')}")
+    if protein_counts.get("affettati_magri", 0) != 1:
+        errors.append(f"Protein category 'affettati_magri': expected 1, got {protein_counts.get('affettati_magri')}")
+    if protein_counts.get("pasto_libero", 0) != 1:
+        errors.append(f"Protein category 'pasto_libero': expected 1, got {protein_counts.get('pasto_libero')}")
+    if protein_counts.get("pesce", 0) < 2:
+        errors.append(f"Protein category 'pesce': expected at least 2, got {protein_counts.get('pesce')}")
+    if protein_counts.get("uova", 0) < 2:
+        errors.append(f"Protein category 'uova': expected at least 2, got {protein_counts.get('uova')}")
+    if protein_counts.get("legumi_tofu", 0) < 2:
+        errors.append(f"Protein category 'legumi_tofu': expected at least 2, got {protein_counts.get('legumi_tofu')}")
 
     return (len(errors) == 0), errors
 

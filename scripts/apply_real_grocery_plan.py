@@ -1,0 +1,926 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Applies the genuine Esselunga order #157049848 (42 items, Locker Via Adriano)
+and real weekly meal plan with exact caloric balance (2063 kcal target).
+"""
+
+import json
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+CURRENT_WEEK_PATH = PROJECT_ROOT / "src" / "data" / "current-week.json"
+
+real_cart_summary = {
+    "total_estimated_eur": 105.10,
+    "gross_total_eur": 122.10,
+    "discount_eur": 17.00,
+    "items_count": 42,
+    "cart_url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/carrello",
+    "last_updated": "2026-10-30T23:55:00Z",
+    "store": "Esselunga Locker Via Adriano 81, Milano",
+    "order_number": "157049848",
+    "pickup_slot": "Sabato 31/10/2026, ore 08:00 - 11:30",
+    "payment_method": "Pagamento online con carta di credito",
+    "grouped_items": [
+        {
+            "category": "Carne, Pesce e Uova",
+            "items": [
+                {"name": "Esselunga Naturama filetto di pollo a fette senza antibiotici 500g", "qty": "1 pz (500g)", "estimated_eur": 6.79},
+                {"name": "Esselunga suino nodini (bistecche nel filetto) 2 pz 550g", "qty": "2 conf (~1.1 kg)", "estimated_eur": 8.24},
+                {"name": "Esselunga filetto di salmone fresco 390g", "qty": "1 pz (390g)", "estimated_eur": 8.15},
+                {"name": "Esselunga filetto di orata 200g", "qty": "1 pz (200g)", "estimated_eur": 5.42},
+                {"name": "Oggi Pesce Vongole del Pacifico cotte surgelate 1000g", "qty": "1 conf (1 kg)", "estimated_eur": 3.99},
+                {"name": "Esselunga Speck Alto Adige IGP 100g", "qty": "1 pz (100g)", "estimated_eur": 2.89},
+                {"name": "Uova fresche da galline ruspanti del suocero", "qty": "10 uova", "estimated_eur": 0.00}
+            ]
+        },
+        {
+            "category": "Frutta e Verdura Fresca",
+            "items": [
+                {"name": "Verza Tagliata 400 g", "qty": "1 busta (400g)", "estimated_eur": 1.98},
+                {"name": "Esselunga Naturama Mele Fuji confezionate 1200g", "qty": "1 cestino (1.2 kg)", "estimated_eur": 2.98},
+                {"name": "Esselunga Naturama Altromercato banane 900g", "qty": "1 conf (900g)", "estimated_eur": 2.68},
+                {"name": "Esselunga Naturama carotine confezionate 450 g", "qty": "1 conf (450g)", "estimated_eur": 0.98},
+                {"name": "Pomodorini grappolo confezionati 500 g", "qty": "1 conf (500g)", "estimated_eur": 3.28},
+                {"name": "Peperoni gialli 850g", "qty": "1 conf (~850g)", "estimated_eur": 2.36},
+                {"name": "Melanzane 900g", "qty": "1 conf (~900g)", "estimated_eur": 1.24},
+                {"name": "Esselunga Cipolle dorate 1 kg", "qty": "1 rete (1 kg)", "estimated_eur": 1.48},
+                {"name": "Esselunga Bio limoni biologici 500 g", "qty": "1 rete (500g)", "estimated_eur": 2.38}
+            ]
+        },
+        {
+            "category": "Latticini e Burro",
+            "items": [
+                {"name": "Esselunga Yogurt greco 0% grassi bianco 500 g", "qty": "1 vaschetta (500g)", "estimated_eur": 2.65},
+                {"name": "Sterzing Vipiteno Yogurt intero Bianco 500 g", "qty": "1 vasetto (500g)", "estimated_eur": 1.49},
+                {"name": "Esselunga latte fresco pastorizzato parz. scremato 1 l", "qty": "1 bottiglia (1 L)", "estimated_eur": 1.19},
+                {"name": "Esselunga Latte parz. scremato UHT lunga conservazione 1000 ml", "qty": "4 brik (4 L)", "estimated_eur": 4.36},
+                {"name": "Parmareggio Burro 400 g", "qty": "1 panetto (400g)", "estimated_eur": 3.79}
+            ]
+        },
+        {
+            "category": "Pasta, Pane e Dispensa Salata",
+            "items": [
+                {"name": "Barilla Pasta Spaghetti n.5 1Kg", "qty": "1 pacco (1 kg)", "estimated_eur": 1.85},
+                {"name": "Esselunga Penne rigate pasta di semola grano duro 500 g", "qty": "1 pacco (500g)", "estimated_eur": 0.65},
+                {"name": "Esselunga Margherite ripieno ai carciofi 250 g", "qty": "1 conf (250g)", "estimated_eur": 1.88},
+                {"name": "Esselunga Pane morbido integrale 400 g", "qty": "2 conf (800g)", "estimated_eur": 1.98},
+                {"name": "Siam Spring Roll Wrappers Thai Rice Paper 100 g", "qty": "1 conf (100g)", "estimated_eur": 3.59},
+                {"name": "Esselunga Ceci 3 x 380 g", "qty": "1 tris (1140g)", "estimated_eur": 1.85},
+                {"name": "Esselunga Lenticchie 400 g", "qty": "1 barattolo (400g)", "estimated_eur": 0.73},
+                {"name": "Garofalo Potere al Pomodoro Passata 700 g", "qty": "2 bottiglie (1.4 kg)", "estimated_eur": 2.98},
+                {"name": "Le Conserve della Nonna Pomodoro Dolce 700 g", "qty": "2 vasi (1.4 kg)", "estimated_eur": 1.98},
+                {"name": "Mutti Triplo Concentrato di Pomodoro 185 g", "qty": "1 tubetto (185g)", "estimated_eur": 1.29},
+                {"name": "Esselunga Doppio concentrato di pomodoro 130 g", "qty": "1 tubetto (130g)", "estimated_eur": 0.75},
+                {"name": "Kikkoman Salsa di Soia 150 ml", "qty": "1 bottiglietta (150 ml)", "estimated_eur": 3.70},
+                {"name": "Coelsanus Frutti di Cappero 200 g", "qty": "1 vasetto (200g)", "estimated_eur": 4.94}
+            ]
+        },
+        {
+            "category": "Cereali, Dolci, Bevande e Igiene",
+            "items": [
+                {"name": "CHEERIOS Cereali Integrali al Miele 330g", "qty": "1 scatola (330g)", "estimated_eur": 2.50},
+                {"name": "Galbusera Cereali G Granola e Frolla Cioccolato 300 g", "qty": "1 conf (300g)", "estimated_eur": 1.80},
+                {"name": "Esselunga Frollini con gocce di cioccolato 500 g", "qty": "1 pacco (500g)", "estimated_eur": 1.49},
+                {"name": "Esselunga Cioccolato fondente extra 100 g", "qty": "1 tavoletta (100g)", "estimated_eur": 1.49},
+                {"name": "Smart Praline assortite 500 g", "qty": "1 busta (500g)", "estimated_eur": 3.69},
+                {"name": "Chupa Chups Fun Party Mix 224 g", "qty": "2 buste (448g)", "estimated_eur": 5.78},
+                {"name": "Dufour Big Frut Gelee Frutti di Bosco 150 g", "qty": "1 busta (150g)", "estimated_eur": 1.00},
+                {"name": "Esselunga Cola zero 1 L", "qty": "4 bottiglie (4 L)", "estimated_eur": 2.56},
+                {"name": "Pino Silvestre Bagno Doccia Idratante 750 ml", "qty": "2 flaconi (1.5 L)", "estimated_eur": 5.30}
+            ]
+        }
+    ]
+}
+
+# 7 days with exact macro arithmetic matching daily_macros
+days = [
+    {
+        "id": "sabato-2026-10-31",
+        "day_name": "Sabato",
+        "date": "2026-10-31",
+        "daily_macros": {"kcal": 2060, "carbs_g": 274, "proteins_g": 92, "fats_g": 68},
+        "meals": {
+            "colazione": {
+                "id": "sabato-colazione",
+                "meal_type": "colazione",
+                "title": "Cheerios integrali al miele e latte parzialmente scremato",
+                "subtitle": "Colazione energetica con cereali integrali e latte fresco",
+                "category": "Colazione",
+                "kcal": 350,
+                "macros": {"carbs_g": 54, "proteins_g": 14, "fats_g": 9},
+                "ingredients": [
+                    {"name": "Cheerios cereali integrali al miele", "qty": "50g", "category": "dispensa"},
+                    {"name": "Latte fresco parzialmente scremato", "qty": "200ml", "category": "latticini"},
+                    {"name": "Caffè espresso", "qty": "1 tazzina", "category": "dispensa", "notes": "senza zucchero"}
+                ],
+                "recipe_steps": [
+                    "Versare 200ml di latte parzialmente scremato caldo o freddo in una tazza.",
+                    "Aggiungere 50g di cereali integrali Cheerios al miele.",
+                    "Accompagnare con una tazzina di caffè o tè senza zucchero."
+                ],
+                "prep_time_min": 3,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "pranzo": {
+                "id": "sabato-pranzo",
+                "meal_type": "pranzo",
+                "title": "Involtini primavera con verza, verdure e uovo fresco",
+                "subtitle": "Fogli di riso thai ripieni di verza stufata con soia e uovo delle galline del suocero",
+                "category": "Uova",
+                "kcal": 570,
+                "macros": {"carbs_g": 72, "proteins_g": 28, "fats_g": 18},
+                "ingredients": [
+                    {"name": "Siam fogli di riso thai", "qty": "6 fogli (ca. 50g)", "category": "dispensa"},
+                    {"name": "Verza tagliata fresca", "qty": "250g", "category": "frutta_verdura"},
+                    {"name": "Uovo fresco del suocero", "qty": "1 uovo intero", "category": "latticini"},
+                    {"name": "Cipolla dorata", "qty": "50g a fettine", "category": "frutta_verdura"},
+                    {"name": "Kikkoman salsa di soia", "qty": "1 cucchiaio (15ml)", "category": "condimenti"},
+                    {"name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti"}
+                ],
+                "recipe_steps": [
+                    "Spadellare la verza tagliata e la cipolla a fette con metà dell'olio EVO e un goccio d'acqua fino a renderle morbide e dorate.",
+                    "Aggiungere un cucchiaio di salsa di soia Kikkoman e l'uovo fresco sbattuto, mescolando energicamente per creare straccetti fini.",
+                    "Immergere rapidamente un foglio di riso in acqua tiepida per 15 secondi fino a renderlo morbido e adagiarlo su un tagliere.",
+                    "Disporre al centro un cucchiaio abbondante di ripieno di verza e uovo, ripiegare i bordi e arrotolare stretto.",
+                    "Rosolare gli involtini 2 minuti per lato in padella antiaderente con il restante olio EVO fino a renderli croccanti."
+                ],
+                "prep_time_min": 15,
+                "cook_time_min": 10,
+                "image_url": "/recipes/sabato_pranzo.webp"
+            },
+            "spuntino_pomeriggio": {
+                "id": "sabato-spuntino",
+                "meal_type": "spuntino_pomeriggio",
+                "title": "Yogurt greco 0% con mela Fuji fresca",
+                "subtitle": "Spuntino pomeridiano proteico a lento rilascio glucidico",
+                "category": "Spuntino",
+                "kcal": 165,
+                "macros": {"carbs_g": 24, "proteins_g": 16, "fats_g": 0.5},
+                "ingredients": [
+                    {"name": "Esselunga yogurt greco 0% grassi bianco", "qty": "150g", "category": "latticini"},
+                    {"name": "Mela Fuji Esselunga Naturama", "qty": "150g a cubetti", "category": "frutta_verdura"}
+                ],
+                "recipe_steps": [
+                    "Lavare accuratamente la mela Fuji e tagliarla a dadini regolari lasciando la buccia per l'apporto di fibra.",
+                    "Disporre 150g di yogurt greco 0% in una ciotola.",
+                    "Guarnire con i dadini di mela fresca."
+                ],
+                "prep_time_min": 3,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "cena": {
+                "id": "sabato-cena",
+                "meal_type": "cena",
+                "title": "Pizza Margherita Napoletana",
+                "subtitle": "Pasto Libero settimanale autorizzato dalla Dott.ssa Caglioni",
+                "category": "Pasto Libero",
+                "is_free_meal": True,
+                "kcal": 780,
+                "macros": {"carbs_g": 95, "proteins_g": 32, "fats_g": 28},
+                "ingredients": [
+                    {"name": "Pizza Margherita tradizionale napoletana", "qty": "1 pizza intera", "category": "dispensa", "notes": "pomodoro, mozzarella fiordilatte, basilico, olio EVO"}
+                ],
+                "recipe_steps": [
+                    "Pasto libero del sabato sera concordato con la nutrizionista.",
+                    "Consumare con consapevolezza e idratarsi con abbondante acqua naturale."
+                ],
+                "prep_time_min": 0,
+                "cook_time_min": 0,
+                "image_url": "/recipes/sabato_cena.webp"
+            },
+            "dopocena": {
+                "id": "sabato-dopocena",
+                "meal_type": "dopocena",
+                "title": "Banana fresca e cioccolato fondente extra",
+                "subtitle": "Dolce dopocena equilibrato con antiossidanti naturali",
+                "category": "Dopocena",
+                "kcal": 195,
+                "macros": {"carbs_g": 29, "proteins_g": 2, "fats_g": 12.5},
+                "ingredients": [
+                    {"name": "Banana Esselunga Naturama Altromercato", "qty": "1 banana piccola (120g)", "category": "frutta_verdura"},
+                    {"name": "Esselunga cioccolato fondente extra", "qty": "20g (2 quadratini)", "category": "dispensa"}
+                ],
+                "recipe_steps": [
+                    "Sbucciare e affettare una banana piccola matura al punto giusto.",
+                    "Accompagnare con 2 quadratini di cioccolato fondente extra spezzettati."
+                ],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            }
+        }
+    },
+    {
+        "id": "domenica-2026-11-01",
+        "day_name": "Domenica",
+        "date": "2026-11-01",
+        "daily_macros": {"kcal": 2063, "carbs_g": 258, "proteins_g": 112, "fats_g": 62},
+        "meals": {
+            "colazione": {
+                "id": "domenica-colazione",
+                "meal_type": "colazione",
+                "title": "Pane morbido integrale tostato e latte scremato",
+                "subtitle": "Colazione domenicale nutriente con pane tostato a lenta assimilazione",
+                "category": "Colazione",
+                "kcal": 350,
+                "macros": {"carbs_g": 50, "proteins_g": 14, "fats_g": 9},
+                "ingredients": [
+                    {"name": "Esselunga pane morbido integrale", "qty": "2 fette (ca. 60g)", "category": "dispensa"},
+                    {"name": "Latte fresco parzialmente scremato", "qty": "200ml", "category": "latticini"},
+                    {"name": "Caffè espresso", "qty": "1 tazzina", "category": "dispensa"}
+                ],
+                "recipe_steps": [
+                    "Tostare leggermente 2 fette di pane morbido integrale in padella o tostapane.",
+                    "Scaldare 200ml di latte parzialmente scremato con caffè espresso senza zucchero."
+                ],
+                "prep_time_min": 5,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "pranzo": {
+                "id": "domenica-pranzo",
+                "meal_type": "pranzo",
+                "title": "Spaghetti alle vongole con melanzane alla piastra",
+                "subtitle": "Spaghetti Barilla n.5 con vongole del Pacifico, concentrato Mutti e melanzane all'origano",
+                "category": "Pesce",
+                "kcal": 680,
+                "macros": {"carbs_g": 90, "proteins_g": 38, "fats_g": 16},
+                "ingredients": [
+                    {"name": "Barilla Spaghetti n.5", "qty": "100g", "category": "dispensa"},
+                    {"name": "Oggi Pesce vongole del Pacifico surgelate", "qty": "500g (con guscio, ~100g polpa)", "category": "pesce"},
+                    {"name": "Melanzane fresche", "qty": "200g a fette", "category": "frutta_verdura"},
+                    {"name": "Mutti triplo concentrato di pomodoro", "qty": "1 cucchiaino", "category": "condimenti"},
+                    {"name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti"},
+                    {"name": "Spicchio d'aglio e prezzemolo", "qty": "q.b.", "category": "condimenti"}
+                ],
+                "recipe_steps": [
+                    "Lessare 100g di spaghetti n.5 in abbondante acqua bollente salata mantenendoli al dente.",
+                    "In una padella capiente far imbiondire uno spicchio d'aglio con un cucchiaino di olio EVO, aggiungere le vongole e un cucchiaino di triplo concentrato Mutti sciolto in poca acqua di cottura.",
+                    "Scolare la pasta al dente e saltarla 2 minuti nella padella delle vongole finché il sugo lega.",
+                    "Grigliare le fette di melanzana su piastra ben calda 3 minuti per lato, condire con origano e l'olio EVO a crudo."
+                ],
+                "prep_time_min": 10,
+                "cook_time_min": 12,
+                "image_url": "/recipes/domenica_pranzo.webp"
+            },
+            "spuntino_pomeriggio": {
+                "id": "domenica-spuntino",
+                "meal_type": "spuntino_pomeriggio",
+                "title": "Yogurt greco 0% con banana a rondelle",
+                "subtitle": "Ricarica pomeridiana di potassio e proteine purissime",
+                "category": "Spuntino",
+                "kcal": 180,
+                "macros": {"carbs_g": 28, "proteins_g": 16, "fats_g": 0.5},
+                "ingredients": [
+                    {"name": "Esselunga yogurt greco 0% grassi", "qty": "150g", "category": "latticini"},
+                    {"name": "Banana Altromercato", "qty": "1 banana media (120g)", "category": "frutta_verdura"}
+                ],
+                "recipe_steps": [
+                    "Versare lo yogurt greco 0% in una ciotola e guarnire con banana fresca a rondelle."
+                ],
+                "prep_time_min": 3,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "cena": {
+                "id": "domenica-cena",
+                "meal_type": "cena",
+                "title": "Trancio di salmone fresco con peperoni gialli al forno",
+                "subtitle": "Salmone scozzese ai ferri ricco di omega-3, pane integrale tostato e peperoni al limone",
+                "category": "Pesce",
+                "kcal": 700,
+                "macros": {"carbs_g": 65, "proteins_g": 42, "fats_g": 28},
+                "ingredients": [
+                    {"name": "Esselunga filetto di salmone fresco", "qty": "130g", "category": "pesce"},
+                    {"name": "Esselunga pane morbido integrale", "qty": "130g (ca. 4 fette tostate)", "category": "dispensa"},
+                    {"name": "Peperoni gialli freschi", "qty": "200g a listarelle", "category": "frutta_verdura"},
+                    {"name": "Limone biologico", "qty": "1/2 limone (succo)", "category": "frutta_verdura"},
+                    {"name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti"}
+                ],
+                "recipe_steps": [
+                    "Infornare i peperoni tagliati a listarelle a 190°C per 20 minuti finché morbidi e dorati.",
+                    "Scottare il trancio di salmone in padella antiaderente ben calda per 3-4 minuti dal lato pelle, poi voltarlo per altri 2 minuti.",
+                    "Tostare 130g di pane integrale a fette.",
+                    "Impiattare il salmone spruzzato di succo di limone fresco, servito con i peperoni al forno e pane tostato."
+                ],
+                "prep_time_min": 10,
+                "cook_time_min": 20,
+                "image_url": "/recipes/domenica_cena.webp"
+            },
+            "dopocena": {
+                "id": "domenica-dopocena",
+                "meal_type": "dopocena",
+                "title": "Mela Fuji e cioccolato fondente extra",
+                "subtitle": "Spuntino serale ricco di fibra e teobromina distensiva",
+                "category": "Dopocena",
+                "kcal": 153,
+                "macros": {"carbs_g": 25, "proteins_g": 2, "fats_g": 8},
+                "ingredients": [
+                    {"name": "Mela Fuji Naturama", "qty": "150g", "category": "frutta_verdura"},
+                    {"name": "Cioccolato fondente extra 100g", "qty": "15g (1 quadretto e mezzo)", "category": "dispensa"}
+                ],
+                "recipe_steps": [
+                    "Consumare la mela Fuji lavata e tagliata a spicchi con cioccolato fondente extra."
+                ],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            }
+        }
+    },
+    {
+        "id": "lunedi-2026-11-02",
+        "day_name": "Lunedì",
+        "date": "2026-11-02",
+        "daily_macros": {"kcal": 2063, "carbs_g": 263, "proteins_g": 100, "fats_g": 64},
+        "meals": {
+            "colazione": {
+                "id": "lunedi-colazione",
+                "meal_type": "colazione",
+                "title": "Granola Galbusera al cioccolato con latte scremato",
+                "subtitle": "Inizio settimana con croccantezza ed energia bilanciata",
+                "category": "Colazione",
+                "kcal": 360,
+                "macros": {"carbs_g": 52, "proteins_g": 13, "fats_g": 11},
+                "ingredients": [
+                    {"name": "Galbusera Cereali G Granola e Frolla", "qty": "45g", "category": "dispensa"},
+                    {"name": "Latte fresco parz. scremato", "qty": "200ml", "category": "latticini"},
+                    {"name": "Caffè espresso", "qty": "1 tazzina", "category": "dispensa"}
+                ],
+                "recipe_steps": [
+                    "Tuffare 45g di granola e frolla al cioccolato in 200ml di latte parzialmente scremato tiepido.",
+                    "Accompagnare con una tazza di caffè non zuccherato."
+                ],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "pranzo": {
+                "id": "lunedi-pranzo",
+                "meal_type": "pranzo",
+                "title": "Margherite ai carciofi con pomodorini e ceci caldi",
+                "subtitle": "Pasta fresca ripiena ai carciofi, ceci lessati e carotine spadellate con capperi",
+                "category": "Legumi",
+                "kcal": 690,
+                "macros": {"carbs_g": 94, "proteins_g": 33, "fats_g": 18},
+                "ingredients": [
+                    {"name": "Esselunga Margherite ripieno ai carciofi", "qty": "130g", "category": "dispensa"},
+                    {"name": "Esselunga Ceci lessati", "qty": "150g (sgocciolati)", "category": "legumi"},
+                    {"name": "Pomodorini a grappolo", "qty": "100g a dadini", "category": "frutta_verdura"},
+                    {"name": "Esselunga Naturama carotine", "qty": "150g a rondelle", "category": "frutta_verdura"},
+                    {"name": "Coelsanus frutti di cappero", "qty": "1 cucchiaio", "category": "condimenti"},
+                    {"name": "Cipolla dorata", "qty": "30g", "category": "frutta_verdura"},
+                    {"name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti"}
+                ],
+                "recipe_steps": [
+                    "Lessare 130g di Margherite ai carciofi in acqua bollente salata per 3-4 minuti.",
+                    "In una padella saltare i pomodorini e i ceci lessati con cipolla dorata e un goccio d'olio EVO.",
+                    "Unire la pasta ripiena e saltare delicatamente con un filo di succo di limone ed erbe.",
+                    "In un secondo padellino spadellare le carotine a rondelle con i frutti di cappero Coelsanus."
+                ],
+                "prep_time_min": 10,
+                "cook_time_min": 8,
+                "image_url": "/recipes/lunedi_pranzo.webp"
+            },
+            "spuntino_pomeriggio": {
+                "id": "lunedi-spuntino",
+                "meal_type": "spuntino_pomeriggio",
+                "title": "Yogurt greco 0% con mela Fuji",
+                "subtitle": "Proteine concentrate e zuccheri complessi della frutta fresca",
+                "category": "Spuntino",
+                "kcal": 165,
+                "macros": {"carbs_g": 24, "proteins_g": 16, "fats_g": 0.5},
+                "ingredients": [
+                    {"name": "Yogurt greco 0% grassi bianco", "qty": "150g", "category": "latticini"},
+                    {"name": "Mela Fuji Naturama", "qty": "150g", "category": "frutta_verdura"}
+                ],
+                "recipe_steps": [
+                    "Mescolare 150g di yogurt greco con tocchetti di mela Fuji fresca."
+                ],
+                "prep_time_min": 3,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "cena": {
+                "id": "lunedi-cena",
+                "meal_type": "cena",
+                "title": "Uova in camicia con melanzane a funghetto al pomodoro",
+                "subtitle": "2 uova fresche del suocero, pane integrale tostato e melanzane stufate nel pomodoro dolce",
+                "category": "Uova",
+                "kcal": 695,
+                "macros": {"carbs_g": 68, "proteins_g": 36, "fats_g": 26},
+                "ingredients": [
+                    {"name": "Uova fresche del suocero", "qty": "2 uova intere", "category": "latticini"},
+                    {"name": "Esselunga pane morbido integrale tostato", "qty": "130g", "category": "dispensa"},
+                    {"name": "Melanzane fresche", "qty": "200g a cubetti", "category": "frutta_verdura"},
+                    {"name": "Le Conserve della Nonna pomodoro dolce", "qty": "100g", "category": "condimenti"},
+                    {"name": "Cipolla dorata", "qty": "30g", "category": "frutta_verdura"},
+                    {"name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti"},
+                    {"name": "Limone", "qty": "1 cucchiaio succo", "category": "frutta_verdura"}
+                ],
+                "recipe_steps": [
+                    "Stufare i cubetti di melanzana in padella con cipolla, pomodoro dolce Le Conserve della Nonna e un pizzico d'origano fino a cottura.",
+                    "Cuocere le 2 uova fresche del suocero in camicia (o alla coque per 4 minuti).",
+                    "Tostare 130g di pane morbido integrale a fette.",
+                    "Servire le uova cosparse di succo di limone fresco, accompagnate dalle melanzane a funghetto e pane tostato."
+                ],
+                "prep_time_min": 10,
+                "cook_time_min": 15,
+                "image_url": "/recipes/lunedi_cena.webp"
+            },
+            "dopocena": {
+                "id": "lunedi-dopocena",
+                "meal_type": "dopocena",
+                "title": "Mela Fuji e cioccolato fondente",
+                "subtitle": "Spuntino dopocena rilassante",
+                "category": "Dopocena",
+                "kcal": 153,
+                "macros": {"carbs_g": 25, "proteins_g": 2, "fats_g": 8},
+                "ingredients": [
+                    {"name": "Mela Fuji", "qty": "150g", "category": "frutta_verdura"},
+                    {"name": "Cioccolato fondente extra", "qty": "15g", "category": "dispensa"}
+                ],
+                "recipe_steps": ["Consumare mela Fuji e quadratino di fondente extra."],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            }
+        }
+    },
+    {
+        "id": "martedi-2026-11-03",
+        "day_name": "Martedì",
+        "date": "2026-11-03",
+        "daily_macros": {"kcal": 2063, "carbs_g": 276, "proteins_g": 106, "fats_g": 56},
+        "meals": {
+            "colazione": {
+                "id": "martedi-colazione",
+                "meal_type": "colazione",
+                "title": "Cheerios integrali al miele e latte parzialmente scremato",
+                "subtitle": "Colazione bilanciata con latte e cereali integrali",
+                "category": "Colazione",
+                "kcal": 350,
+                "macros": {"carbs_g": 54, "proteins_g": 14, "fats_g": 9},
+                "ingredients": [
+                    {"name": "Cheerios integrali al miele", "qty": "50g", "category": "dispensa"},
+                    {"name": "Latte UHT parz. scremato", "qty": "200ml", "category": "latticini"},
+                    {"name": "Caffè espresso", "qty": "1 tazzina", "category": "dispensa"}
+                ],
+                "recipe_steps": ["Unire 50g di Cheerios a 200ml di latte parzialmente scremato caldo."],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "pranzo": {
+                "id": "martedi-pranzo",
+                "meal_type": "pranzo",
+                "title": "Penne rigate al pomodoro e filetto di pollo ai ferri",
+                "subtitle": "Penne di semola Esselunga n.19, pollo Naturama senza antibiotici con limone e pomodorini",
+                "category": "Carne Bianca",
+                "kcal": 690,
+                "macros": {"carbs_g": 84, "proteins_g": 49, "fats_g": 14},
+                "ingredients": [
+                    {"name": "Esselunga Penne rigate n.19", "qty": "100g", "category": "dispensa"},
+                    {"name": "Esselunga Naturama filetto di pollo a fette", "qty": "150g", "category": "carne_bianca"},
+                    {"name": "Le Conserve della Nonna pomodoro dolce", "qty": "100g", "category": "condimenti"},
+                    {"name": "Pomodorini grappolo freschi", "qty": "150g", "category": "frutta_verdura"},
+                    {"name": "Limone bio", "qty": "1/2 limone spremuto", "category": "frutta_verdura"},
+                    {"name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti"},
+                    {"name": "Cipolla dorata", "qty": "30g", "category": "frutta_verdura"}
+                ],
+                "recipe_steps": [
+                    "Cuocere 100g di penne rigate al dente e condirle con sugo di pomodoro dolce e cipolla cotto con metà dell'olio EVO.",
+                    "Cuocere il petto di pollo su piastra ben calda per 3 minuti per lato.",
+                    "Spruzzare abbondante succo di limone fresco sul pollo per esaltare l'assorbimento di ferro.",
+                    "Accompagnare con insalatina di pomodorini freschi conditi con l'olio EVO restante."
+                ],
+                "prep_time_min": 10,
+                "cook_time_min": 10,
+                "image_url": "/recipes/martedi_pranzo.webp"
+            },
+            "spuntino_pomeriggio": {
+                "id": "martedi-spuntino",
+                "meal_type": "spuntino_pomeriggio",
+                "title": "Yogurt intero Vipiteno con banana fresca",
+                "subtitle": "Cremosità alpina dello yogurt Sterzing con potassio naturale",
+                "category": "Spuntino",
+                "kcal": 180,
+                "macros": {"carbs_g": 28, "proteins_g": 8, "fats_g": 5},
+                "ingredients": [
+                    {"name": "Sterzing Vipiteno yogurt intero bianco", "qty": "150g", "category": "latticini"},
+                    {"name": "Banana Altromercato", "qty": "1 banana (120g)", "category": "frutta_verdura"}
+                ],
+                "recipe_steps": ["Versare 150g di yogurt intero Vipiteno e unire la banana a rondelle."],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "cena": {
+                "id": "martedi-cena",
+                "meal_type": "cena",
+                "title": "Lenticchie in umido con pane tostato e peperoni gialli",
+                "subtitle": "Lenticchie Esselunga stufate con cipolla e carotine, pane integrale tostato e peperoni saltati",
+                "category": "Legumi",
+                "kcal": 690,
+                "macros": {"carbs_g": 85, "proteins_g": 33, "fats_g": 20},
+                "ingredients": [
+                    {"name": "Esselunga Lenticchie", "qty": "150g (sgocciolate)", "category": "legumi"},
+                    {"name": "Esselunga pane morbido integrale", "qty": "130g tostato", "category": "dispensa"},
+                    {"name": "Peperoni gialli freschi", "qty": "200g a tocchetti", "category": "frutta_verdura"},
+                    {"name": "Esselunga Naturama carotine", "qty": "50g a dadini", "category": "frutta_verdura"},
+                    {"name": "Cipolla dorata", "qty": "30g", "category": "frutta_verdura"},
+                    {"name": "Garofalo passata di pomodoro", "qty": "50g", "category": "condimenti"},
+                    {"name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti"}
+                ],
+                "recipe_steps": [
+                    "Rosolare carotina e cipolla tritate in un filo d'olio EVO, unire le lenticchie e la passata Garofalo.",
+                    "Lasciare sobbollire 10 minuti fino a ottenere una consistenza densa e saporita.",
+                    "Saltare i peperoni a tocchetti in padella antiaderente fino a doratura.",
+                    "Servire le lenticchie calde con 130g di pane integrale tostato e contorno di peperoni."
+                ],
+                "prep_time_min": 10,
+                "cook_time_min": 15,
+                "image_url": "/recipes/martedi_cena.webp"
+            },
+            "dopocena": {
+                "id": "martedi-dopocena",
+                "meal_type": "dopocena",
+                "title": "Mela Fuji e cioccolato fondente",
+                "subtitle": "Fibra serale rinfrescante con nota fondente",
+                "category": "Dopocena",
+                "kcal": 153,
+                "macros": {"carbs_g": 25, "proteins_g": 2, "fats_g": 8},
+                "ingredients": [
+                    {"name": "Mela Fuji Naturama", "qty": "150g", "category": "frutta_verdura"},
+                    {"name": "Cioccolato fondente extra", "qty": "15g", "category": "dispensa"}
+                ],
+                "recipe_steps": ["Gustare 150g di mela Fuji fresca a spicchi con fondente extra."],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            }
+        }
+    },
+    {
+        "id": "mercoledi-2026-11-04",
+        "day_name": "Mercoledì",
+        "date": "2026-11-04",
+        "daily_macros": {"kcal": 2063, "carbs_g": 251, "proteins_g": 104, "fats_g": 68},
+        "meals": {
+            "colazione": {
+                "id": "mercoledi-colazione",
+                "meal_type": "colazione",
+                "title": "Pane morbido integrale tostato e latte caldo",
+                "subtitle": "Colazione nutriente con pane tostato a lenta assimilazione",
+                "category": "Colazione",
+                "kcal": 350,
+                "macros": {"carbs_g": 50, "proteins_g": 14, "fats_g": 9},
+                "ingredients": [
+                    {"name": "Esselunga pane morbido integrale", "qty": "2 fette (60g)", "category": "dispensa"},
+                    {"name": "Latte UHT parz. scremato", "qty": "200ml", "category": "latticini"},
+                    {"name": "Caffè espresso", "qty": "1 tazzina", "category": "dispensa"}
+                ],
+                "recipe_steps": ["Tostare il pane e gustarlo con latte e caffè."],
+                "prep_time_min": 3,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "pranzo": {
+                "id": "mercoledi-pranzo",
+                "meal_type": "pranzo",
+                "title": "Penne con speck sgrassato e melanzane alla piastra",
+                "subtitle": "Penne rigate Esselunga con speck Alto Adige IGP scottato in padella e melanzane all'origano",
+                "category": "Affettati Magri",
+                "kcal": 695,
+                "macros": {"carbs_g": 84, "proteins_g": 44, "fats_g": 20},
+                "ingredients": [
+                    {"name": "Esselunga Penne rigate n.19", "qty": "100g", "category": "dispensa"},
+                    {"name": "Esselunga Speck Alto Adige IGP", "qty": "100g (privato del grasso visibile)", "category": "affettati_magri"},
+                    {"name": "Melanzane fresche", "qty": "200g", "category": "frutta_verdura"},
+                    {"name": "Garofalo passata di pomodoro", "qty": "80g", "category": "condimenti"},
+                    {"name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti"},
+                    {"name": "Cipolla dorata", "qty": "30g", "category": "frutta_verdura"}
+                ],
+                "recipe_steps": [
+                    "Cuocere 100g di penne rigate al dente.",
+                    "Tagliare lo speck sgrassato a listarelle e farlo saltare 1 minuto a fiamma vivace in padella antiaderente senza bruciarlo.",
+                    "Unire la passata Garofalo e condire le penne scolate.",
+                    "Grigliare le melanzane a fette su piastra ben calda con l'olio EVO a crudo e origano."
+                ],
+                "prep_time_min": 10,
+                "cook_time_min": 10,
+                "image_url": "/recipes/mercoledi_pranzo.webp"
+            },
+            "spuntino_pomeriggio": {
+                "id": "mercoledi-spuntino",
+                "meal_type": "spuntino_pomeriggio",
+                "title": "Yogurt intero Vipiteno con mela Fuji",
+                "subtitle": "Gusto pieno e nutrienti bilanciati",
+                "category": "Spuntino",
+                "kcal": 175,
+                "macros": {"carbs_g": 26, "proteins_g": 8, "fats_g": 5},
+                "ingredients": [
+                    {"name": "Sterzing Vipiteno yogurt intero bianco", "qty": "150g", "category": "latticini"},
+                    {"name": "Mela Fuji Naturama", "qty": "150g", "category": "frutta_verdura"}
+                ],
+                "recipe_steps": ["Tagliare la mela a dadini e unirla allo yogurt intero Vipiteno."],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "cena": {
+                "id": "mercoledi-cena",
+                "meal_type": "cena",
+                "title": "Uova al tegamino con pomodorini caldi e capperi",
+                "subtitle": "2 uova fresche del suocero, pane integrale tostato e pomodorini saltati con capperi Coelsanus",
+                "category": "Uova",
+                "kcal": 690,
+                "macros": {"carbs_g": 66, "proteins_g": 36, "fats_g": 26},
+                "ingredients": [
+                    {"name": "Uova fresche del suocero", "qty": "2 uova intere", "category": "latticini"},
+                    {"name": "Esselunga pane morbido integrale", "qty": "130g tostato", "category": "dispensa"},
+                    {"name": "Pomodorini grappolo freschi", "qty": "200g a metà", "category": "frutta_verdura"},
+                    {"name": "Coelsanus frutti di cappero", "qty": "1 cucchiaio", "category": "condimenti"},
+                    {"name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti"},
+                    {"name": "Limone", "qty": "1 spruzzata", "category": "frutta_verdura"}
+                ],
+                "recipe_steps": [
+                    "Saltare i pomodorini a metà in padella con i capperi e un cucchiaino d'olio EVO finché appassiti.",
+                    "Cuocere le 2 uova all'occhio di bue nella stessa padella mantenendo il tuorlo morbido.",
+                    "Tostare 130g di pane integrale morbido a fette.",
+                    "Servire caldo spruzzando poche gocce di limone fresco sulle uova."
+                ],
+                "prep_time_min": 5,
+                "cook_time_min": 7,
+                "image_url": "/recipes/mercoledi_cena.webp"
+            },
+            "dopocena": {
+                "id": "mercoledi-dopocena",
+                "meal_type": "dopocena",
+                "title": "Mela Fuji e cioccolato fondente extra",
+                "subtitle": "Spuntino dopocena bilanciato",
+                "category": "Dopocena",
+                "kcal": 153,
+                "macros": {"carbs_g": 25, "proteins_g": 2, "fats_g": 8},
+                "ingredients": [
+                    {"name": "Mela Fuji", "qty": "150g", "category": "frutta_verdura"},
+                    {"name": "Cioccolato fondente extra", "qty": "15g", "category": "dispensa"}
+                ],
+                "recipe_steps": ["Consumare mela Fuji e quadratino di fondente extra."],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            }
+        }
+    },
+    {
+        "id": "giovedi-2026-11-05",
+        "day_name": "Giovedì",
+        "date": "2026-11-05",
+        "daily_macros": {"kcal": 2063, "carbs_g": 264, "proteins_g": 104, "fats_g": 64},
+        "meals": {
+            "colazione": {
+                "id": "giovedi-colazione",
+                "meal_type": "colazione",
+                "title": "Cheerios integrali al miele con latte scremato",
+                "subtitle": "Colazione veloce con cereali integrali e latte fresco",
+                "category": "Colazione",
+                "kcal": 350,
+                "macros": {"carbs_g": 54, "proteins_g": 14, "fats_g": 9},
+                "ingredients": [
+                    {"name": "Cheerios integrali al miele", "qty": "50g", "category": "dispensa"},
+                    {"name": "Latte UHT parz. scremato", "qty": "200ml", "category": "latticini"},
+                    {"name": "Caffè espresso", "qty": "1 tazzina", "category": "dispensa"}
+                ],
+                "recipe_steps": ["Versare 50g di Cheerios in 200ml di latte caldo."],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "pranzo": {
+                "id": "giovedi-pranzo",
+                "meal_type": "pranzo",
+                "title": "Pasta e ceci con carotine crude a fiammifero",
+                "subtitle": "Penne rigate con ceci lessati, passata Garofalo, carotine julienne e succo di limone",
+                "category": "Legumi",
+                "kcal": 695,
+                "macros": {"carbs_g": 92, "proteins_g": 32, "fats_g": 18},
+                "ingredients": [
+                    {"name": "Esselunga Penne rigate n.19", "qty": "90g", "category": "dispensa"},
+                    {"name": "Esselunga Ceci lessati", "qty": "150g (sgocciolati)", "category": "legumi"},
+                    {"name": "Garofalo passata di pomodoro", "qty": "80g", "category": "condimenti"},
+                    {"name": "Esselunga Naturama carotine", "qty": "150g a julienne", "category": "frutta_verdura"},
+                    {"name": "Cipolla dorata", "qty": "30g", "category": "frutta_verdura"},
+                    {"name": "Limone bio", "qty": "1/2 limone spremuto", "category": "frutta_verdura"},
+                    {"name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti"}
+                ],
+                "recipe_steps": [
+                    "Rosolare la cipolla dorata con metà dell'olio EVO, unire la passata Garofalo e 150g di ceci lessati.",
+                    "Cuocere 90g di penne al dente, scolarle e mantecarle direttamente nel sugo denso di ceci.",
+                    "Tagliare le carotine a julienne sottili e condirle con succo di limone fresco e il restante olio EVO a crudo."
+                ],
+                "prep_time_min": 10,
+                "cook_time_min": 12,
+                "image_url": "/recipes/giovedi_pranzo.webp"
+            },
+            "spuntino_pomeriggio": {
+                "id": "giovedi-spuntino",
+                "meal_type": "spuntino_pomeriggio",
+                "title": "Yogurt intero Vipiteno con banana",
+                "subtitle": "Cremosità e sostegno glucidico pomeridiano",
+                "category": "Spuntino",
+                "kcal": 180,
+                "macros": {"carbs_g": 28, "proteins_g": 8, "fats_g": 5},
+                "ingredients": [
+                    {"name": "Sterzing Vipiteno yogurt intero bianco", "qty": "150g", "category": "latticini"},
+                    {"name": "Banana Altromercato", "qty": "1 banana (120g)", "category": "frutta_verdura"}
+                ],
+                "recipe_steps": ["Unire la banana a rondelle allo yogurt intero Vipiteno."],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "cena": {
+                "id": "giovedi-cena",
+                "meal_type": "cena",
+                "title": "Filetto di orata al cartoccio con melanzane grigliate",
+                "subtitle": "Filetto di orata Esselunga con pomodorini, limone e origano, pane integrale tostato e melanzane",
+                "category": "Pesce",
+                "kcal": 685,
+                "macros": {"carbs_g": 65, "proteins_g": 48, "fats_g": 24},
+                "ingredients": [
+                    {"name": "Esselunga filetto di orata", "qty": "200g", "category": "pesce"},
+                    {"name": "Esselunga pane morbido integrale", "qty": "130g tostato", "category": "dispensa"},
+                    {"name": "Melanzane fresche", "qty": "200g a fette", "category": "frutta_verdura"},
+                    {"name": "Pomodorini grappolo", "qty": "100g a spicchi", "category": "frutta_verdura"},
+                    {"name": "Coelsanus frutti di cappero", "qty": "1 cucchiaino", "category": "condimenti"},
+                    {"name": "Limone bio", "qty": "fette e succo", "category": "frutta_verdura"},
+                    {"name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti"}
+                ],
+                "recipe_steps": [
+                    "Disporre il filetto di orata (200g) su carta forno con pomodorini a spicchi, capperi, fette di limone e origano. Chiudere a cartoccio e infornare a 190°C per 15 minuti.",
+                    "Grigliare le fette di melanzana su piastra caldissima 3 minuti per lato, condire con l'olio EVO a crudo.",
+                    "Tostare 130g di pane morbido integrale.",
+                    "Aprire il cartoccio fumante e servire con le melanzane e il pane tostato."
+                ],
+                "prep_time_min": 10,
+                "cook_time_min": 15,
+                "image_url": "/recipes/giovedi_cena.webp"
+            },
+            "dopocena": {
+                "id": "giovedi-dopocena",
+                "meal_type": "dopocena",
+                "title": "Mela Fuji e cioccolato fondente",
+                "subtitle": "Chiusura di giornata leggera e idratante",
+                "category": "Dopocena",
+                "kcal": 153,
+                "macros": {"carbs_g": 25, "proteins_g": 2, "fats_g": 8},
+                "ingredients": [
+                    {"name": "Mela Fuji Naturama", "qty": "150g", "category": "frutta_verdura"},
+                    {"name": "Cioccolato fondente extra", "qty": "15g", "category": "dispensa"}
+                ],
+                "recipe_steps": ["Gustare una mela Fuji fresca tagliata a spicchi con fondente extra."],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            }
+        }
+    },
+    {
+        "id": "venerdi-2026-11-06",
+        "day_name": "Venerdì",
+        "date": "2026-11-06",
+        "daily_macros": {"kcal": 2063, "carbs_g": 247, "proteins_g": 112, "fats_g": 66},
+        "meals": {
+            "colazione": {
+                "id": "venerdi-colazione",
+                "meal_type": "colazione",
+                "title": "Granola Galbusera al cioccolato con latte scremato",
+                "subtitle": "Colazione energetica di fine settimana",
+                "category": "Colazione",
+                "kcal": 360,
+                "macros": {"carbs_g": 52, "proteins_g": 13, "fats_g": 11},
+                "ingredients": [
+                    {"name": "Galbusera Cereali G Granola e Frolla", "qty": "45g", "category": "dispensa"},
+                    {"name": "Latte UHT parz. scremato", "qty": "200ml", "category": "latticini"},
+                    {"name": "Caffè espresso", "qty": "1 tazzina", "category": "dispensa"}
+                ],
+                "recipe_steps": ["Versare 45g di granola Galbusera in 200ml di latte parzialmente scremato tiepido."],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "pranzo": {
+                "id": "venerdi-pranzo",
+                "meal_type": "pranzo",
+                "title": "Filetto di pollo marinato alla soia con peperoni gialli",
+                "subtitle": "Pollo Naturama marinato con limone e soia Kikkoman, pane integrale e peperoni al forno",
+                "category": "Carne Bianca",
+                "kcal": 685,
+                "macros": {"carbs_g": 68, "proteins_g": 50, "fats_g": 18},
+                "ingredients": [
+                    {"name": "Esselunga Naturama filetto di pollo a fette", "qty": "150g", "category": "carne_bianca"},
+                    {"name": "Esselunga pane morbido integrale", "qty": "130g tostato", "category": "dispensa"},
+                    {"name": "Peperoni gialli freschi", "qty": "200g al forno", "category": "frutta_verdura"},
+                    {"name": "Kikkoman salsa di soia", "qty": "1 cucchiaino", "category": "condimenti"},
+                    {"name": "Limone bio", "qty": "1/2 limone spremuto", "category": "frutta_verdura"},
+                    {"name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti"}
+                ],
+                "recipe_steps": [
+                    "Marinare le fette di pollo per 10 minuti con succo di limone e un goccio di soia Kikkoman.",
+                    "Cuocere il pollo su piastra rovente 3 minuti per lato.",
+                    "Infornare i peperoni a listarelle a 190°C finché morbidi e dorati.",
+                    "Tostare 130g di pane integrale e servire con il pollo caldo e i peperoni conditi con l'olio EVO a crudo."
+                ],
+                "prep_time_min": 10,
+                "cook_time_min": 15,
+                "image_url": "/recipes/venerdi_pranzo.webp"
+            },
+            "spuntino_pomeriggio": {
+                "id": "venerdi-spuntino",
+                "meal_type": "spuntino_pomeriggio",
+                "title": "Banana fresca e frollini con gocce di cioccolato",
+                "subtitle": "Pausa dolce equilibrata prima del weekend",
+                "category": "Spuntino",
+                "kcal": 180,
+                "macros": {"carbs_g": 36, "proteins_g": 2, "fats_g": 4},
+                "ingredients": [
+                    {"name": "Banana Altromercato", "qty": "1 banana (120g)", "category": "frutta_verdura"},
+                    {"name": "Esselunga frollini con gocce di cioccolato", "qty": "2 biscotti (ca. 20g)", "category": "dispensa"},
+                    {"name": "Tè verde non zuccherato", "qty": "1 tazza", "category": "dispensa"}
+                ],
+                "recipe_steps": ["Gustare la banana fresca e 2 frollini con gocce di cioccolato con una tazza di tè caldo."],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            },
+            "cena": {
+                "id": "venerdi-cena",
+                "meal_type": "cena",
+                "title": "Nodino di suino sgrassato con dadolata di melanzane al pomodoro",
+                "subtitle": "Nodino di suino Esselunga alla griglia, pane integrale tostato e melanzane con pomodoro dolce",
+                "category": "Carne Rossa",
+                "kcal": 685,
+                "macros": {"carbs_g": 66, "proteins_g": 45, "fats_g": 25},
+                "ingredients": [
+                    {"name": "Esselunga suino nodini (bistecca nel filetto)", "qty": "130g cotto (sgrassato)", "category": "carne_rossa"},
+                    {"name": "Esselunga pane morbido integrale", "qty": "130g tostato", "category": "dispensa"},
+                    {"name": "Melanzane fresche", "qty": "200g a dadini", "category": "frutta_verdura"},
+                    {"name": "Le Conserve della Nonna pomodoro dolce", "qty": "80g", "category": "condimenti"},
+                    {"name": "Cipolla dorata", "qty": "30g", "category": "frutta_verdura"},
+                    {"name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti"}
+                ],
+                "recipe_steps": [
+                    "Rosolare la cipolla dorata e i dadini di melanzana con metà dell'olio EVO e il pomodoro dolce Le Conserve della Nonna per 12 minuti.",
+                    "Cuocere il nodino di suino privato del grasso visibile su griglia caldissima per 4 minuti per lato, mantenendolo morbido e succoso.",
+                    "Tostare 130g di pane morbido integrale.",
+                    "Servire la bistecca di filetto con le melanzane al pomodoro e pane tostato, completando con l'olio EVO restante."
+                ],
+                "prep_time_min": 10,
+                "cook_time_min": 15,
+                "image_url": "/recipes/venerdi_cena.webp"
+            },
+            "dopocena": {
+                "id": "venerdi-dopocena",
+                "meal_type": "dopocena",
+                "title": "Mela Fuji e cioccolato fondente extra",
+                "subtitle": "Chiusura di settimana perfetta",
+                "category": "Dopocena",
+                "kcal": 153,
+                "macros": {"carbs_g": 25, "proteins_g": 2, "fats_g": 8},
+                "ingredients": [
+                    {"name": "Mela Fuji Naturama", "qty": "150g", "category": "frutta_verdura"},
+                    {"name": "Cioccolato fondente extra", "qty": "15g", "category": "dispensa"}
+                ],
+                "recipe_steps": ["Consumare mela Fuji e quadratino di fondente extra."],
+                "prep_time_min": 2,
+                "cook_time_min": 0,
+                "image_url": "/recipes/placeholder-dish.svg"
+            }
+        }
+    }
+]
+
+payload = {
+    "week_id": "2026-W44",
+    "week_start": "2026-10-31",
+    "week_end": "2026-11-06",
+    "macro_target": {
+        "kcal": 2063,
+        "carbs_g": 251,
+        "proteins_g": 112,
+        "fats_g": 68,
+        "fiber_g": 42
+    },
+    "cart_summary": real_cart_summary,
+    "days": days
+}
+
+with open(CURRENT_WEEK_PATH, "w", encoding="utf-8") as f:
+    json.dump(payload, f, indent=2, ensure_ascii=False)
+
+print("current-week.json updated successfully with real Esselunga order data!")
