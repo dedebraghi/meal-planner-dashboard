@@ -13,71 +13,227 @@
     "total_estimated_eur": 106.35,
     "items_count": 39,
     "cart_url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/carrello",
-    "last_updated": "2026-10-30T18:30:00Z",
+    "last_updated": "2026-10-30T20:40:07Z",
     "store": "Esselunga",
     "grouped_items": [
       {
         "category": "Carne e Salumi",
         "items": [
-          { "name": "Petto di pollo a fette biologico", "qty": "300g (2 x 150g)", "estimated_eur": 5.90 },
-          { "name": "Tagliata di manzo magro scottona", "qty": "120g", "estimated_eur": 4.50 },
-          { "name": "Bresaola della Valtellina IGP", "qty": "100g", "estimated_eur": 3.80 }
+          {
+            "name": "Petto di pollo a fette biologico",
+            "qty": "300g (2 x 150g)",
+            "estimated_eur": 5.9
+          },
+          {
+            "name": "Tagliata di manzo magro scottona",
+            "qty": "120g",
+            "estimated_eur": 4.5
+          },
+          {
+            "name": "Bresaola della Valtellina IGP",
+            "qty": "100g",
+            "estimated_eur": 3.8
+          }
         ]
       },
       {
         "category": "Pescheria",
         "items": [
-          { "name": "Filetto di orata fresca sfilettata", "qty": "200g", "estimated_eur": 4.90 },
-          { "name": "Trancio di salmone fresco scozzese", "qty": "125g", "estimated_eur": 3.75 }
+          {
+            "name": "Filetto di orata fresca sfilettata",
+            "qty": "200g",
+            "estimated_eur": 4.9
+          },
+          {
+            "name": "Trancio di salmone fresco scozzese",
+            "qty": "125g",
+            "estimated_eur": 3.75
+          }
         ]
       },
       {
         "category": "Uova e Latticini",
         "items": [
-          { "name": "Uova biologiche fresche da allevamento all'aperto", "qty": "6 uova", "estimated_eur": 2.45 },
-          { "name": "Latte fresco parzialmente scremato microfiltrato", "qty": "2 litri", "estimated_eur": 3.20 },
-          { "name": "Yogurt greco 0% naturale (confezione)", "qty": "7 x 150g", "estimated_eur": 8.40 },
-          { "name": "Ricotta fresca vaccina", "qty": "100g", "estimated_eur": 1.20 },
-          { "name": "Parmigiano Reggiano DOP 24 mesi", "qty": "200g", "estimated_eur": 4.60 }
+          {
+            "name": "Uova biologiche fresche da allevamento all'aperto",
+            "qty": "6 uova",
+            "estimated_eur": 2.45
+          },
+          {
+            "name": "Latte fresco parzialmente scremato microfiltrato",
+            "qty": "2 litri",
+            "estimated_eur": 3.2
+          },
+          {
+            "name": "Yogurt greco 0% naturale (confezione)",
+            "qty": "7 x 150g",
+            "estimated_eur": 8.4
+          },
+          {
+            "name": "Ricotta fresca vaccina",
+            "qty": "100g",
+            "estimated_eur": 1.2
+          },
+          {
+            "name": "Parmigiano Reggiano DOP 24 mesi",
+            "qty": "200g",
+            "estimated_eur": 4.6
+          }
         ]
       },
       {
         "category": "Frutta e Verdura Fresca",
         "items": [
-          { "name": "Verza autunnale", "qty": "1 cespo (ca. 500g)", "estimated_eur": 1.50 },
-          { "name": "Zucca delica a fette", "qty": "500g", "estimated_eur": 1.80 },
-          { "name": "Finocchi freschi", "qty": "500g", "estimated_eur": 1.40 },
-          { "name": "Cicoria catalogna", "qty": "500g", "estimated_eur": 1.60 },
-          { "name": "Spinaci freschi in foglia", "qty": "500g", "estimated_eur": 1.90 },
-          { "name": "Broccoli cime fresche", "qty": "500g", "estimated_eur": 1.70 },
-          { "name": "Bietole fresche a coste", "qty": "500g", "estimated_eur": 1.60 },
-          { "name": "Cavolfiore bianco fresco", "qty": "1 testa (ca. 600g)", "estimated_eur": 1.80 },
-          { "name": "Cavolo nero toscano", "qty": "300g", "estimated_eur": 1.90 },
-          { "name": "Zucchine scure", "qty": "500g", "estimated_eur": 1.50 },
-          { "name": "Rucola e insalata mista", "qty": "2 confezioni", "estimated_eur": 2.20 },
-          { "name": "Mele Fuji / Golden biologiche", "qty": "1 kg", "estimated_eur": 2.50 },
-          { "name": "Pere Williams / Abate", "qty": "1 kg", "estimated_eur": 2.60 },
-          { "name": "Kiwi italiani", "qty": "500g", "estimated_eur": 1.80 },
-          { "name": "Arance e Clementine fresche", "qty": "1 kg", "estimated_eur": 2.20 },
-          { "name": "Limoni biologici", "qty": "500g", "estimated_eur": 1.50 }
+          {
+            "name": "Verza autunnale",
+            "qty": "1 cespo (ca. 500g)",
+            "estimated_eur": 1.5
+          },
+          {
+            "name": "Zucca delica a fette",
+            "qty": "500g",
+            "estimated_eur": 1.8
+          },
+          {
+            "name": "Finocchi freschi",
+            "qty": "500g",
+            "estimated_eur": 1.4
+          },
+          {
+            "name": "Cicoria catalogna",
+            "qty": "500g",
+            "estimated_eur": 1.6
+          },
+          {
+            "name": "Spinaci freschi in foglia",
+            "qty": "500g",
+            "estimated_eur": 1.9
+          },
+          {
+            "name": "Broccoli cime fresche",
+            "qty": "500g",
+            "estimated_eur": 1.7
+          },
+          {
+            "name": "Bietole fresche a coste",
+            "qty": "500g",
+            "estimated_eur": 1.6
+          },
+          {
+            "name": "Cavolfiore bianco fresco",
+            "qty": "1 testa (ca. 600g)",
+            "estimated_eur": 1.8
+          },
+          {
+            "name": "Cavolo nero toscano",
+            "qty": "300g",
+            "estimated_eur": 1.9
+          },
+          {
+            "name": "Zucchine scure",
+            "qty": "500g",
+            "estimated_eur": 1.5
+          },
+          {
+            "name": "Rucola e insalata mista",
+            "qty": "2 confezioni",
+            "estimated_eur": 2.2
+          },
+          {
+            "name": "Mele Fuji / Golden biologiche",
+            "qty": "1 kg",
+            "estimated_eur": 2.5
+          },
+          {
+            "name": "Pere Williams / Abate",
+            "qty": "1 kg",
+            "estimated_eur": 2.6
+          },
+          {
+            "name": "Kiwi italiani",
+            "qty": "500g",
+            "estimated_eur": 1.8
+          },
+          {
+            "name": "Arance e Clementine fresche",
+            "qty": "1 kg",
+            "estimated_eur": 2.2
+          },
+          {
+            "name": "Limoni biologici",
+            "qty": "500g",
+            "estimated_eur": 1.5
+          }
         ]
       },
       {
         "category": "Dispensa e Panetteria",
         "items": [
-          { "name": "Biscotti integrali Grancereale", "qty": "1 confezione (250g)", "estimated_eur": 1.95 },
-          { "name": "Fiocchi di avena integrali", "qty": "500g", "estimated_eur": 1.60 },
-          { "name": "Pane integrale casereccio a fette", "qty": "1 kg", "estimated_eur": 3.40 },
-          { "name": "Marmellata 100% frutta senza zuccheri aggiunti", "qty": "1 vasetto", "estimated_eur": 2.30 },
-          { "name": "Pasta integrale di semola", "qty": "500g", "estimated_eur": 1.30 },
-          { "name": "Riso Basmati e Riso Venere", "qty": "2 x 500g", "estimated_eur": 3.80 },
-          { "name": "Farro perlato", "qty": "500g", "estimated_eur": 1.60 },
-          { "name": "Gnocchi di patate freschi", "qty": "250g", "estimated_eur": 1.40 },
-          { "name": "Ceci lessati in vetro", "qty": "1 barattolo (240g sgocciolati)", "estimated_eur": 1.10 },
-          { "name": "Lenticchie lesse in vetro", "qty": "1 barattolo (240g sgocciolati)", "estimated_eur": 1.10 },
-          { "name": "Tofu biologico al naturale", "qty": "1 panetto (125g)", "estimated_eur": 1.50 },
-          { "name": "Noci sgusciate e Mandorle naturali", "qty": "2 x 100g", "estimated_eur": 4.20 },
-          { "name": "Olio Extravergine di Oliva 100% Italiano", "qty": "1 bottiglia (750ml)", "estimated_eur": 8.90 }
+          {
+            "name": "Biscotti integrali Grancereale",
+            "qty": "1 confezione (250g)",
+            "estimated_eur": 1.95
+          },
+          {
+            "name": "Fiocchi di avena integrali",
+            "qty": "500g",
+            "estimated_eur": 1.6
+          },
+          {
+            "name": "Pane integrale casereccio a fette",
+            "qty": "1 kg",
+            "estimated_eur": 3.4
+          },
+          {
+            "name": "Marmellata 100% frutta senza zuccheri aggiunti",
+            "qty": "1 vasetto",
+            "estimated_eur": 2.3
+          },
+          {
+            "name": "Pasta integrale di semola",
+            "qty": "500g",
+            "estimated_eur": 1.3
+          },
+          {
+            "name": "Riso Basmati e Riso Venere",
+            "qty": "2 x 500g",
+            "estimated_eur": 3.8
+          },
+          {
+            "name": "Farro perlato",
+            "qty": "500g",
+            "estimated_eur": 1.6
+          },
+          {
+            "name": "Gnocchi di patate freschi",
+            "qty": "250g",
+            "estimated_eur": 1.4
+          },
+          {
+            "name": "Ceci lessati in vetro",
+            "qty": "1 barattolo (240g sgocciolati)",
+            "estimated_eur": 1.1
+          },
+          {
+            "name": "Lenticchie lesse in vetro",
+            "qty": "1 barattolo (240g sgocciolati)",
+            "estimated_eur": 1.1
+          },
+          {
+            "name": "Tofu biologico al naturale",
+            "qty": "1 panetto (125g)",
+            "estimated_eur": 1.5
+          },
+          {
+            "name": "Noci sgusciate e Mandorle naturali",
+            "qty": "2 x 100g",
+            "estimated_eur": 4.2
+          },
+          {
+            "name": "Olio Extravergine di Oliva 100% Italiano",
+            "qty": "1 bottiglia (750ml)",
+            "estimated_eur": 8.9
+          }
         ]
       }
     ]
@@ -101,11 +257,28 @@
           "subtitle": "Colazione bilanciata con carboidrati complessi",
           "category": "Colazione",
           "kcal": 340,
-          "macros": { "carbs_g": 48, "proteins_g": 13, "fats_g": 10 },
+          "macros": {
+            "carbs_g": 48,
+            "proteins_g": 13,
+            "fats_g": 10
+          },
           "ingredients": [
-            { "name": "Biscotti integrali Grancereale", "qty": "44g (4 biscotti)", "category": "dispensa" },
-            { "name": "Latte parzialmente scremato", "qty": "200ml", "category": "latticini" },
-            { "name": "Caffè espresso", "qty": "1 tazzina", "category": "dispensa", "notes": "senza zucchero" }
+            {
+              "name": "Biscotti integrali Grancereale",
+              "qty": "44g (4 biscotti)",
+              "category": "dispensa"
+            },
+            {
+              "name": "Latte parzialmente scremato",
+              "qty": "200ml",
+              "category": "latticini"
+            },
+            {
+              "name": "Caffè espresso",
+              "qty": "1 tazzina",
+              "category": "dispensa",
+              "notes": "senza zucchero"
+            }
           ],
           "recipe_steps": [
             "Scaldare dolcemente 200ml di latte parzialmente scremato in un pentolino.",
@@ -123,13 +296,38 @@
           "subtitle": "Proteine dell'uovo con verdura di stagione ricca di micronutrienti",
           "category": "Uova",
           "kcal": 580,
-          "macros": { "carbs_g": 68, "proteins_g": 31, "fats_g": 20 },
+          "macros": {
+            "carbs_g": 68,
+            "proteins_g": 31,
+            "fats_g": 20
+          },
           "ingredients": [
-            { "name": "Uova fresche biologiche", "qty": "2 uova intere", "category": "latticini" },
-            { "name": "Verza autunnale", "qty": "250g a crudo", "category": "frutta_verdura" },
-            { "name": "Pane integrale tostato", "qty": "130g", "category": "dispensa" },
-            { "name": "Olio extravergine d'oliva", "qty": "10g (1 cucchiaio)", "category": "condimenti" },
-            { "name": "Limone fresco", "qty": "1/2 limone (succo)", "category": "frutta_verdura", "notes": "favorisce assorbimento ferro" }
+            {
+              "name": "Uova fresche biologiche",
+              "qty": "2 uova intere",
+              "category": "latticini"
+            },
+            {
+              "name": "Verza autunnale",
+              "qty": "250g a crudo",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Pane integrale tostato",
+              "qty": "130g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Olio extravergine d'oliva",
+              "qty": "10g (1 cucchiaio)",
+              "category": "condimenti"
+            },
+            {
+              "name": "Limone fresco",
+              "qty": "1/2 limone (succo)",
+              "category": "frutta_verdura",
+              "notes": "favorisce assorbimento ferro"
+            }
           ],
           "recipe_steps": [
             "Mondare la verza, ricavare 4-5 foglie larghe e sbollentarle per 3 minuti in acqua bollente leggermente salata.",
@@ -149,11 +347,27 @@
           "subtitle": "Spuntino ad alto valore proteico e basso carico glicemico",
           "category": "Spuntino",
           "kcal": 165,
-          "macros": { "carbs_g": 24, "proteins_g": 16, "fats_g": 0.5 },
+          "macros": {
+            "carbs_g": 24,
+            "proteins_g": 16,
+            "fats_g": 0.5
+          },
           "ingredients": [
-            { "name": "Yogurt greco 0% naturale", "qty": "150g", "category": "latticini" },
-            { "name": "Mela fresca Fuji", "qty": "150g", "category": "frutta_verdura" },
-            { "name": "Cannella in polvere", "qty": "1 pizzico", "category": "dispensa" }
+            {
+              "name": "Yogurt greco 0% naturale",
+              "qty": "150g",
+              "category": "latticini"
+            },
+            {
+              "name": "Mela fresca Fuji",
+              "qty": "150g",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Cannella in polvere",
+              "qty": "1 pizzico",
+              "category": "dispensa"
+            }
           ],
           "recipe_steps": [
             "Lavare accuratamente la mela e tagliarla a dadini regolari mantenendo la buccia per l'apporto di fibra.",
@@ -172,9 +386,18 @@
           "category": "Pasto Libero",
           "is_free_meal": true,
           "kcal": 780,
-          "macros": { "carbs_g": 95, "proteins_g": 32, "fats_g": 28 },
+          "macros": {
+            "carbs_g": 95,
+            "proteins_g": 32,
+            "fats_g": 28
+          },
           "ingredients": [
-            { "name": "Pizza Margherita tradizionale napoletana", "qty": "1 pizza", "category": "dispensa", "notes": "pomodoro San Marzano, fiordilatte, basilico, olio EVO" }
+            {
+              "name": "Pizza Margherita tradizionale napoletana",
+              "qty": "1 pizza",
+              "category": "dispensa",
+              "notes": "pomodoro San Marzano, fiordilatte, basilico, olio EVO"
+            }
           ],
           "recipe_steps": [
             "Pasto libero settimanale concordato nel protocollo nutrizionale della Dott.ssa Caglioni.",
@@ -192,10 +415,22 @@
           "subtitle": "Acidi grassi omega-3 e micronutrienti serali",
           "category": "Dopocena",
           "kcal": 195,
-          "macros": { "carbs_g": 22, "proteins_g": 4, "fats_g": 13 },
+          "macros": {
+            "carbs_g": 22,
+            "proteins_g": 4,
+            "fats_g": 13
+          },
           "ingredients": [
-            { "name": "Noci sgusciate", "qty": "20g", "category": "dispensa" },
-            { "name": "Pera Abate fresca", "qty": "150g", "category": "frutta_verdura" }
+            {
+              "name": "Noci sgusciate",
+              "qty": "20g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Pera Abate fresca",
+              "qty": "150g",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Lavare 150g di pera autunnale e affettarla finemente.",
@@ -225,12 +460,32 @@
           "subtitle": "Energia pura da cereali integrali e frutta",
           "category": "Colazione",
           "kcal": 350,
-          "macros": { "carbs_g": 58, "proteins_g": 14, "fats_g": 5 },
+          "macros": {
+            "carbs_g": 58,
+            "proteins_g": 14,
+            "fats_g": 5
+          },
           "ingredients": [
-            { "name": "Pane integrale a fette", "qty": "75g", "category": "dispensa" },
-            { "name": "Marmellata 100% frutta senza zuccheri", "qty": "25g", "category": "dispensa" },
-            { "name": "Latte parzialmente scremato", "qty": "200ml", "category": "latticini" },
-            { "name": "Tè nero o caffè", "qty": "1 tazza", "category": "dispensa" }
+            {
+              "name": "Pane integrale a fette",
+              "qty": "75g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Marmellata 100% frutta senza zuccheri",
+              "qty": "25g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Latte parzialmente scremato",
+              "qty": "200ml",
+              "category": "latticini"
+            },
+            {
+              "name": "Tè nero o caffè",
+              "qty": "1 tazza",
+              "category": "dispensa"
+            }
           ],
           "recipe_steps": [
             "Tostare le fette di pane integrale nel tostapane fino a doratura uniforme.",
@@ -248,13 +503,37 @@
           "subtitle": "Carne bianca magra con carboidrati profumati e caroteni autunnali",
           "category": "Carne bianca",
           "kcal": 675,
-          "macros": { "carbs_g": 85, "proteins_g": 42, "fats_g": 17 },
+          "macros": {
+            "carbs_g": 85,
+            "proteins_g": 42,
+            "fats_g": 17
+          },
           "ingredients": [
-            { "name": "Petto di pollo a fette", "qty": "150g a crudo", "category": "carne" },
-            { "name": "Riso basmati", "qty": "100g a crudo", "category": "dispensa" },
-            { "name": "Zucca delica a cubetti", "qty": "250g a crudo", "category": "frutta_verdura" },
-            { "name": "Olio extravergine d'oliva", "qty": "15g", "category": "condimenti" },
-            { "name": "Rosmarino fresco", "qty": "1 rametto", "category": "frutta_verdura" }
+            {
+              "name": "Petto di pollo a fette",
+              "qty": "150g a crudo",
+              "category": "carne"
+            },
+            {
+              "name": "Riso basmati",
+              "qty": "100g a crudo",
+              "category": "dispensa"
+            },
+            {
+              "name": "Zucca delica a cubetti",
+              "qty": "250g a crudo",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Olio extravergine d'oliva",
+              "qty": "15g",
+              "category": "condimenti"
+            },
+            {
+              "name": "Rosmarino fresco",
+              "qty": "1 rametto",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Tagliare la zucca a cubetti e cuocerla in forno a 190°C ventilato con rosmarino per 20 minuti senza grassi aggiunti.",
@@ -273,10 +552,22 @@
           "subtitle": "Break pomeridiano proteico e rinfrescante",
           "category": "Spuntino",
           "kcal": 160,
-          "macros": { "carbs_g": 23, "proteins_g": 16, "fats_g": 0.5 },
+          "macros": {
+            "carbs_g": 23,
+            "proteins_g": 16,
+            "fats_g": 0.5
+          },
           "ingredients": [
-            { "name": "Yogurt greco 0% naturale", "qty": "150g", "category": "latticini" },
-            { "name": "Pera Williams", "qty": "150g", "category": "frutta_verdura" }
+            {
+              "name": "Yogurt greco 0% naturale",
+              "qty": "150g",
+              "category": "latticini"
+            },
+            {
+              "name": "Pera Williams",
+              "qty": "150g",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Sbucciare e tagliare a dadini 150g di pera matura.",
@@ -293,13 +584,37 @@
           "subtitle": "Pesce bianco nobile ricco di proteine ad alto valore biologico",
           "category": "Pesce fresco",
           "kcal": 680,
-          "macros": { "carbs_g": 68, "proteins_g": 33, "fats_g": 34 },
+          "macros": {
+            "carbs_g": 68,
+            "proteins_g": 33,
+            "fats_g": 34
+          },
           "ingredients": [
-            { "name": "Filetto di orata fresca", "qty": "200g a crudo", "category": "pesce" },
-            { "name": "Finocchi freschi affettati", "qty": "250g a crudo", "category": "frutta_verdura" },
-            { "name": "Pane integrale tostato", "qty": "130g", "category": "dispensa" },
-            { "name": "Olio extravergine d'oliva", "qty": "15g", "category": "condimenti" },
-            { "name": "Aromi mediterranei (timo, origano)", "qty": "q.b.", "category": "dispensa" }
+            {
+              "name": "Filetto di orata fresca",
+              "qty": "200g a crudo",
+              "category": "pesce"
+            },
+            {
+              "name": "Finocchi freschi affettati",
+              "qty": "250g a crudo",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Pane integrale tostato",
+              "qty": "130g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Olio extravergine d'oliva",
+              "qty": "15g",
+              "category": "condimenti"
+            },
+            {
+              "name": "Aromi mediterranei (timo, origano)",
+              "qty": "q.b.",
+              "category": "dispensa"
+            }
           ],
           "recipe_steps": [
             "Disporre il filetto di orata su un foglio di carta forno, cospargere con timo e origano.",
@@ -318,10 +633,22 @@
           "subtitle": "Calcio nobile biodisponibile e zuccheri lenti",
           "category": "Dopocena",
           "kcal": 200,
-          "macros": { "carbs_g": 17, "proteins_g": 7, "fats_g": 11.5 },
+          "macros": {
+            "carbs_g": 17,
+            "proteins_g": 7,
+            "fats_g": 11.5
+          },
           "ingredients": [
-            { "name": "Parmigiano Reggiano 24 mesi", "qty": "20g", "category": "latticini" },
-            { "name": "Mela Golden", "qty": "150g", "category": "frutta_verdura" }
+            {
+              "name": "Parmigiano Reggiano 24 mesi",
+              "qty": "20g",
+              "category": "latticini"
+            },
+            {
+              "name": "Mela Golden",
+              "qty": "150g",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Ricavare 20g di scaglie sottili da un blocco di Parmigiano Reggiano 24 mesi.",
@@ -351,12 +678,32 @@
           "subtitle": "Beta-glucani e sazietà prolungata per l'inizio settimana",
           "category": "Colazione",
           "kcal": 365,
-          "macros": { "carbs_g": 52, "proteins_g": 16, "fats_g": 9 },
+          "macros": {
+            "carbs_g": 52,
+            "proteins_g": 16,
+            "fats_g": 9
+          },
           "ingredients": [
-            { "name": "Fiocchi d'avena integrali", "qty": "50g", "category": "dispensa" },
-            { "name": "Latte parzialmente scremato", "qty": "200ml", "category": "latticini" },
-            { "name": "Caffè espresso", "qty": "1 tazzina", "category": "dispensa" },
-            { "name": "Cannella in polvere", "qty": "q.b.", "category": "dispensa" }
+            {
+              "name": "Fiocchi d'avena integrali",
+              "qty": "50g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Latte parzialmente scremato",
+              "qty": "200ml",
+              "category": "latticini"
+            },
+            {
+              "name": "Caffè espresso",
+              "qty": "1 tazzina",
+              "category": "dispensa"
+            },
+            {
+              "name": "Cannella in polvere",
+              "qty": "q.b.",
+              "category": "dispensa"
+            }
           ],
           "recipe_steps": [
             "In un pentolino scaldare i 50g di fiocchi d'avena con 200ml di latte parzialmente scremato per 4 minuti fino a ottenere una crema densa.",
@@ -374,13 +721,37 @@
           "subtitle": "Proteine vegetali e carboidrati complessi a rilascio graduale",
           "category": "Legumi",
           "kcal": 665,
-          "macros": { "carbs_g": 96, "proteins_g": 32, "fats_g": 15 },
+          "macros": {
+            "carbs_g": 96,
+            "proteins_g": 32,
+            "fats_g": 15
+          },
           "ingredients": [
-            { "name": "Pasta integrale di semola", "qty": "100g a crudo", "category": "dispensa" },
-            { "name": "Ceci lessati", "qty": "150g cotti (50g secchi)", "category": "dispensa" },
-            { "name": "Cicoria catalogna", "qty": "200g a crudo", "category": "frutta_verdura" },
-            { "name": "Olio extravergine d'oliva", "qty": "15g", "category": "condimenti" },
-            { "name": "Rosmarino", "qty": "1 rametto", "category": "frutta_verdura" }
+            {
+              "name": "Pasta integrale di semola",
+              "qty": "100g a crudo",
+              "category": "dispensa"
+            },
+            {
+              "name": "Ceci lessati",
+              "qty": "150g cotti (50g secchi)",
+              "category": "dispensa"
+            },
+            {
+              "name": "Cicoria catalogna",
+              "qty": "200g a crudo",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Olio extravergine d'oliva",
+              "qty": "15g",
+              "category": "condimenti"
+            },
+            {
+              "name": "Rosmarino",
+              "qty": "1 rametto",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Sbollentare la cicoria in acqua salata per 5 minuti, scolarla e strizzarla.",
@@ -399,10 +770,22 @@
           "subtitle": "Vitamina C e probiotici per l'efficienza intestinale",
           "category": "Spuntino",
           "kcal": 170,
-          "macros": { "carbs_g": 24, "proteins_g": 16, "fats_g": 0.8 },
+          "macros": {
+            "carbs_g": 24,
+            "proteins_g": 16,
+            "fats_g": 0.8
+          },
           "ingredients": [
-            { "name": "Yogurt greco 0% naturale", "qty": "150g", "category": "latticini" },
-            { "name": "Kiwi maturo", "qty": "150g", "category": "frutta_verdura" }
+            {
+              "name": "Yogurt greco 0% naturale",
+              "qty": "150g",
+              "category": "latticini"
+            },
+            {
+              "name": "Kiwi maturo",
+              "qty": "150g",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Sbucciare 150g di kiwi e tagliarlo a fettine tonde.",
@@ -419,13 +802,37 @@
           "subtitle": "Unica frequenza settimanale di carne rossa con apporto di ferro eme",
           "category": "Carne rossa",
           "kcal": 670,
-          "macros": { "carbs_g": 61, "proteins_g": 43, "fats_g": 32.2 },
+          "macros": {
+            "carbs_g": 61,
+            "proteins_g": 43,
+            "fats_g": 32.2
+          },
           "ingredients": [
-            { "name": "Tagliata di manzo magro (scottona)", "qty": "120g a crudo", "category": "carne" },
-            { "name": "Patate a pasta gialla", "qty": "400g a crudo", "category": "frutta_verdura" },
-            { "name": "Spinaci freschi in foglia", "qty": "200g a crudo", "category": "frutta_verdura" },
-            { "name": "Olio extravergine d'oliva", "qty": "15g", "category": "condimenti" },
-            { "name": "Limone fresco", "qty": "succo di 1/2 limone", "category": "frutta_verdura" }
+            {
+              "name": "Tagliata di manzo magro (scottona)",
+              "qty": "120g a crudo",
+              "category": "carne"
+            },
+            {
+              "name": "Patate a pasta gialla",
+              "qty": "400g a crudo",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Spinaci freschi in foglia",
+              "qty": "200g a crudo",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Olio extravergine d'oliva",
+              "qty": "15g",
+              "category": "condimenti"
+            },
+            {
+              "name": "Limone fresco",
+              "qty": "succo di 1/2 limone",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Pelare le patate, tagliarle a cubetti e cuocerle al forno a 200°C ventilato con timo e sale per 25 minuti.",
@@ -444,10 +851,22 @@
           "subtitle": "Magnesio e antiossidanti naturali",
           "category": "Dopocena",
           "kcal": 190,
-          "macros": { "carbs_g": 18, "proteins_g": 5, "fats_g": 11 },
+          "macros": {
+            "carbs_g": 18,
+            "proteins_g": 5,
+            "fats_g": 11
+          },
           "ingredients": [
-            { "name": "Mandorle sgusciate pelate", "qty": "20g", "category": "dispensa" },
-            { "name": "Clementine fresche", "qty": "150g (ca. 2 frutti)", "category": "frutta_verdura" }
+            {
+              "name": "Mandorle sgusciate pelate",
+              "qty": "20g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Clementine fresche",
+              "qty": "150g (ca. 2 frutti)",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Sbucciare le clementine fresche eliminando i filamenti bianchi più duri.",
@@ -477,11 +896,27 @@
           "subtitle": "Ricarica energica con Grancereale e latte",
           "category": "Colazione",
           "kcal": 340,
-          "macros": { "carbs_g": 48, "proteins_g": 13, "fats_g": 10 },
+          "macros": {
+            "carbs_g": 48,
+            "proteins_g": 13,
+            "fats_g": 10
+          },
           "ingredients": [
-            { "name": "Biscotti integrali Grancereale", "qty": "44g", "category": "dispensa" },
-            { "name": "Latte parzialmente scremato", "qty": "200ml", "category": "latticini" },
-            { "name": "Caffè espresso", "qty": "1 tazzina", "category": "dispensa" }
+            {
+              "name": "Biscotti integrali Grancereale",
+              "qty": "44g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Latte parzialmente scremato",
+              "qty": "200ml",
+              "category": "latticini"
+            },
+            {
+              "name": "Caffè espresso",
+              "qty": "1 tazzina",
+              "category": "dispensa"
+            }
           ],
           "recipe_steps": [
             "Scaldare il latte in tazza grande per 1 minuto nel microonde.",
@@ -499,13 +934,37 @@
           "subtitle": "Cereale antico abbinato a formaggio fresco leggero e verdure",
           "category": "Formaggi",
           "kcal": 670,
-          "macros": { "carbs_g": 82, "proteins_g": 32, "fats_g": 22 },
+          "macros": {
+            "carbs_g": 82,
+            "proteins_g": 32,
+            "fats_g": 22
+          },
           "ingredients": [
-            { "name": "Farro perlato", "qty": "100g a crudo", "category": "dispensa" },
-            { "name": "Ricotta fresca vaccina", "qty": "100g", "category": "latticini" },
-            { "name": "Zucchine scure", "qty": "200g a crudo", "category": "frutta_verdura" },
-            { "name": "Olio extravergine d'oliva", "qty": "15g", "category": "condimenti" },
-            { "name": "Origano essiccato", "qty": "1 pizzico", "category": "dispensa" }
+            {
+              "name": "Farro perlato",
+              "qty": "100g a crudo",
+              "category": "dispensa"
+            },
+            {
+              "name": "Ricotta fresca vaccina",
+              "qty": "100g",
+              "category": "latticini"
+            },
+            {
+              "name": "Zucchine scure",
+              "qty": "200g a crudo",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Olio extravergine d'oliva",
+              "qty": "15g",
+              "category": "condimenti"
+            },
+            {
+              "name": "Origano essiccato",
+              "qty": "1 pizzico",
+              "category": "dispensa"
+            }
           ],
           "recipe_steps": [
             "Lessare il farro perlato in abbondante acqua bollente salata per circa 18 minuti fino a consistenza callosa.",
@@ -524,10 +983,22 @@
           "subtitle": "Fibre solubili e supporto al transito intestinale",
           "category": "Spuntino",
           "kcal": 165,
-          "macros": { "carbs_g": 25, "proteins_g": 16, "fats_g": 0.5 },
+          "macros": {
+            "carbs_g": 25,
+            "proteins_g": 16,
+            "fats_g": 0.5
+          },
           "ingredients": [
-            { "name": "Yogurt greco 0% naturale", "qty": "150g", "category": "latticini" },
-            { "name": "Prugne secche denocciolate", "qty": "30g (ca. 3-4 prugne)", "category": "frutta_verdura" }
+            {
+              "name": "Yogurt greco 0% naturale",
+              "qty": "150g",
+              "category": "latticini"
+            },
+            {
+              "name": "Prugne secche denocciolate",
+              "qty": "30g (ca. 3-4 prugne)",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Tagliare le prugne secche a piccoli pezzetti.",
@@ -544,13 +1015,37 @@
           "subtitle": "Pesce azzurro grasso benefico per EPA e DHA",
           "category": "Pesce fresco",
           "kcal": 690,
-          "macros": { "carbs_g": 74, "proteins_g": 47, "fats_g": 23 },
+          "macros": {
+            "carbs_g": 74,
+            "proteins_g": 47,
+            "fats_g": 23
+          },
           "ingredients": [
-            { "name": "Trancio di salmone fresco", "qty": "125g a crudo", "category": "pesce" },
-            { "name": "Broccoli cime fresche", "qty": "250g a crudo", "category": "frutta_verdura" },
-            { "name": "Pane integrale a fette", "qty": "130g", "category": "dispensa" },
-            { "name": "Olio extravergine d'oliva", "qty": "10g", "category": "condimenti" },
-            { "name": "Limone", "qty": "1 spicchio", "category": "frutta_verdura" }
+            {
+              "name": "Trancio di salmone fresco",
+              "qty": "125g a crudo",
+              "category": "pesce"
+            },
+            {
+              "name": "Broccoli cime fresche",
+              "qty": "250g a crudo",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Pane integrale a fette",
+              "qty": "130g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Olio extravergine d'oliva",
+              "qty": "10g",
+              "category": "condimenti"
+            },
+            {
+              "name": "Limone",
+              "qty": "1 spicchio",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Cuocere le cime di broccolo al vapore per 8 minuti; frullarne la metà per ricavare una vellutata verde brillante.",
@@ -569,10 +1064,22 @@
           "subtitle": "Nutrienti essenziali e crunch notturno",
           "category": "Dopocena",
           "kcal": 195,
-          "macros": { "carbs_g": 22, "proteins_g": 4, "fats_g": 12.5 },
+          "macros": {
+            "carbs_g": 22,
+            "proteins_g": 4,
+            "fats_g": 12.5
+          },
           "ingredients": [
-            { "name": "Noci sgusciate", "qty": "20g", "category": "dispensa" },
-            { "name": "Mela Fuji", "qty": "150g", "category": "frutta_verdura" }
+            {
+              "name": "Noci sgusciate",
+              "qty": "20g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Mela Fuji",
+              "qty": "150g",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Tagliare a spicchi la mela lavata.",
@@ -602,12 +1109,32 @@
           "subtitle": "Polifenoli e carboidrati lenti per la metà della settimana",
           "category": "Colazione",
           "kcal": 350,
-          "macros": { "carbs_g": 58, "proteins_g": 14, "fats_g": 5 },
+          "macros": {
+            "carbs_g": 58,
+            "proteins_g": 14,
+            "fats_g": 5
+          },
           "ingredients": [
-            { "name": "Pane integrale", "qty": "75g", "category": "dispensa" },
-            { "name": "Marmellata 100% frutta", "qty": "25g", "category": "dispensa" },
-            { "name": "Latte parzialmente scremato", "qty": "200ml", "category": "latticini" },
-            { "name": "Tè verde giapponese", "qty": "1 tazza", "category": "dispensa" }
+            {
+              "name": "Pane integrale",
+              "qty": "75g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Marmellata 100% frutta",
+              "qty": "25g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Latte parzialmente scremato",
+              "qty": "200ml",
+              "category": "latticini"
+            },
+            {
+              "name": "Tè verde giapponese",
+              "qty": "1 tazza",
+              "category": "dispensa"
+            }
           ],
           "recipe_steps": [
             "Tostare le fette di pane integrale nel tostapane.",
@@ -625,13 +1152,37 @@
           "subtitle": "Classico piatto unico della tradizione contadina italiana",
           "category": "Legumi",
           "kcal": 665,
-          "macros": { "carbs_g": 96, "proteins_g": 33, "fats_g": 14.5 },
+          "macros": {
+            "carbs_g": 96,
+            "proteins_g": 33,
+            "fats_g": 14.5
+          },
           "ingredients": [
-            { "name": "Pasta integrale di semola", "qty": "100g a crudo", "category": "dispensa" },
-            { "name": "Lenticchie lessate in barattolo", "qty": "150g cotte", "category": "dispensa" },
-            { "name": "Bietole fresche", "qty": "200g a crudo", "category": "frutta_verdura" },
-            { "name": "Olio extravergine d'oliva", "qty": "15g", "category": "condimenti" },
-            { "name": "Alloro e pepe nero", "qty": "q.b.", "category": "dispensa" }
+            {
+              "name": "Pasta integrale di semola",
+              "qty": "100g a crudo",
+              "category": "dispensa"
+            },
+            {
+              "name": "Lenticchie lessate in barattolo",
+              "qty": "150g cotte",
+              "category": "dispensa"
+            },
+            {
+              "name": "Bietole fresche",
+              "qty": "200g a crudo",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Olio extravergine d'oliva",
+              "qty": "15g",
+              "category": "condimenti"
+            },
+            {
+              "name": "Alloro e pepe nero",
+              "qty": "q.b.",
+              "category": "dispensa"
+            }
           ],
           "recipe_steps": [
             "Lavare e sminuzzare le bietole a listarelle sottili.",
@@ -650,10 +1201,22 @@
           "subtitle": "Freschezza agrumata con proteine nobili",
           "category": "Spuntino",
           "kcal": 160,
-          "macros": { "carbs_g": 22, "proteins_g": 16, "fats_g": 0.5 },
+          "macros": {
+            "carbs_g": 22,
+            "proteins_g": 16,
+            "fats_g": 0.5
+          },
           "ingredients": [
-            { "name": "Yogurt greco 0% naturale", "qty": "150g", "category": "latticini" },
-            { "name": "Arancia fresca", "qty": "150g", "category": "frutta_verdura" }
+            {
+              "name": "Yogurt greco 0% naturale",
+              "qty": "150g",
+              "category": "latticini"
+            },
+            {
+              "name": "Arancia fresca",
+              "qty": "150g",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Pelare a vivo l'arancia rimuovendo l'albedo bianco per evitare l'amaro.",
@@ -670,13 +1233,37 @@
           "subtitle": "Seconda frequenza di carne bianca leggera e digeribile",
           "category": "Carne bianca",
           "kcal": 685,
-          "macros": { "carbs_g": 57, "proteins_g": 42, "fats_g": 39 },
+          "macros": {
+            "carbs_g": 57,
+            "proteins_g": 42,
+            "fats_g": 39
+          },
           "ingredients": [
-            { "name": "Petto di pollo a fettine sottili", "qty": "150g a crudo", "category": "carne" },
-            { "name": "Cavolfiore bianco", "qty": "300g a crudo", "category": "frutta_verdura" },
-            { "name": "Pane di segale tostato", "qty": "130g", "category": "dispensa" },
-            { "name": "Olio extravergine d'oliva", "qty": "15g", "category": "condimenti" },
-            { "name": "Limone fresco", "qty": "succo di 1 limone intero", "category": "frutta_verdura" }
+            {
+              "name": "Petto di pollo a fettine sottili",
+              "qty": "150g a crudo",
+              "category": "carne"
+            },
+            {
+              "name": "Cavolfiore bianco",
+              "qty": "300g a crudo",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Pane di segale tostato",
+              "qty": "130g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Olio extravergine d'oliva",
+              "qty": "15g",
+              "category": "condimenti"
+            },
+            {
+              "name": "Limone fresco",
+              "qty": "succo di 1 limone intero",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Cuocere il cavolfiore a cimette a vapore per 12 minuti, poi schiacciarlo con una forchetta fino a purea rustica.",
@@ -695,10 +1282,22 @@
           "subtitle": "Spuntino classico emiliano sapido e dolce",
           "category": "Dopocena",
           "kcal": 200,
-          "macros": { "carbs_g": 18, "proteins_g": 7, "fats_g": 9 },
+          "macros": {
+            "carbs_g": 18,
+            "proteins_g": 7,
+            "fats_g": 9
+          },
           "ingredients": [
-            { "name": "Parmigiano Reggiano DOP 24 mesi", "qty": "20g", "category": "latticini" },
-            { "name": "Pera Williams fresca", "qty": "150g", "category": "frutta_verdura" }
+            {
+              "name": "Parmigiano Reggiano DOP 24 mesi",
+              "qty": "20g",
+              "category": "latticini"
+            },
+            {
+              "name": "Pera Williams fresca",
+              "qty": "150g",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Affettare 20g di Parmigiano Reggiano a scaglie.",
@@ -728,11 +1327,27 @@
           "subtitle": "Carica proteica d'avena per la mattina",
           "category": "Colazione",
           "kcal": 365,
-          "macros": { "carbs_g": 52, "proteins_g": 16, "fats_g": 9 },
+          "macros": {
+            "carbs_g": 52,
+            "proteins_g": 16,
+            "fats_g": 9
+          },
           "ingredients": [
-            { "name": "Fiocchi d'avena", "qty": "50g", "category": "dispensa" },
-            { "name": "Latte parzialmente scremato", "qty": "200ml", "category": "latticini" },
-            { "name": "Caffè espresso", "qty": "1 tazzina", "category": "dispensa" }
+            {
+              "name": "Fiocchi d'avena",
+              "qty": "50g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Latte parzialmente scremato",
+              "qty": "200ml",
+              "category": "latticini"
+            },
+            {
+              "name": "Caffè espresso",
+              "qty": "1 tazzina",
+              "category": "dispensa"
+            }
           ],
           "recipe_steps": [
             "Scaldare 200ml di latte fino a sfiorare il bollore.",
@@ -750,13 +1365,37 @@
           "subtitle": "Proteine vegetali e riso nero ricco di antociani protettivi",
           "category": "Legumi",
           "kcal": 670,
-          "macros": { "carbs_g": 84, "proteins_g": 31, "fats_g": 22.5 },
+          "macros": {
+            "carbs_g": 84,
+            "proteins_g": 31,
+            "fats_g": 22.5
+          },
           "ingredients": [
-            { "name": "Riso venere integrale", "qty": "100g a crudo", "category": "dispensa" },
-            { "name": "Tofu biologico al naturale", "qty": "125g a crudo", "category": "dispensa" },
-            { "name": "Cavolo nero toscano", "qty": "200g a crudo", "category": "frutta_verdura" },
-            { "name": "Olio extravergine d'oliva", "qty": "15g", "category": "condimenti" },
-            { "name": "Zenzero fresco grattugiato", "qty": "1 cucchiaino", "category": "frutta_verdura" }
+            {
+              "name": "Riso venere integrale",
+              "qty": "100g a crudo",
+              "category": "dispensa"
+            },
+            {
+              "name": "Tofu biologico al naturale",
+              "qty": "125g a crudo",
+              "category": "dispensa"
+            },
+            {
+              "name": "Cavolo nero toscano",
+              "qty": "200g a crudo",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Olio extravergine d'oliva",
+              "qty": "15g",
+              "category": "condimenti"
+            },
+            {
+              "name": "Zenzero fresco grattugiato",
+              "qty": "1 cucchiaino",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Lessare il riso venere in abbondante acqua per circa 25 minuti finché al dente.",
@@ -775,11 +1414,27 @@
           "subtitle": "Equilibrio glicemico costante",
           "category": "Spuntino",
           "kcal": 165,
-          "macros": { "carbs_g": 24, "proteins_g": 16, "fats_g": 0.5 },
+          "macros": {
+            "carbs_g": 24,
+            "proteins_g": 16,
+            "fats_g": 0.5
+          },
           "ingredients": [
-            { "name": "Yogurt greco 0% naturale", "qty": "150g", "category": "latticini" },
-            { "name": "Mela fresca", "qty": "150g", "category": "frutta_verdura" },
-            { "name": "Cannella", "qty": "q.b.", "category": "dispensa" }
+            {
+              "name": "Yogurt greco 0% naturale",
+              "qty": "150g",
+              "category": "latticini"
+            },
+            {
+              "name": "Mela fresca",
+              "qty": "150g",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Cannella",
+              "qty": "q.b.",
+              "category": "dispensa"
+            }
           ],
           "recipe_steps": [
             "Tagliare la mela lavata a pezzetti.",
@@ -796,13 +1451,37 @@
           "subtitle": "Seconda frequenza di uova cotte senza grassi in eccesso",
           "category": "Uova",
           "kcal": 670,
-          "macros": { "carbs_g": 69, "proteins_g": 44, "fats_g": 25 },
+          "macros": {
+            "carbs_g": 69,
+            "proteins_g": 44,
+            "fats_g": 25
+          },
           "ingredients": [
-            { "name": "Uova fresche", "qty": "2 uova intere", "category": "latticini" },
-            { "name": "Zucchine scure e porri", "qty": "250g a crudo", "category": "frutta_verdura" },
-            { "name": "Pane di semola tostato", "qty": "130g", "category": "dispensa" },
-            { "name": "Olio extravergine d'oliva", "qty": "15g", "category": "condimenti" },
-            { "name": "Prezzemolo fresco", "qty": "1 ciuffo", "category": "frutta_verdura" }
+            {
+              "name": "Uova fresche",
+              "qty": "2 uova intere",
+              "category": "latticini"
+            },
+            {
+              "name": "Zucchine scure e porri",
+              "qty": "250g a crudo",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Pane di semola tostato",
+              "qty": "130g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Olio extravergine d'oliva",
+              "qty": "15g",
+              "category": "condimenti"
+            },
+            {
+              "name": "Prezzemolo fresco",
+              "qty": "1 ciuffo",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Affettare finemente porri e zucchine, stufandoli con poca acqua in padella per 6 minuti.",
@@ -821,10 +1500,22 @@
           "subtitle": "Profilo lipidico benefico e sazietà notturna",
           "category": "Dopocena",
           "kcal": 195,
-          "macros": { "carbs_g": 22, "proteins_g": 5, "fats_g": 11 },
+          "macros": {
+            "carbs_g": 22,
+            "proteins_g": 5,
+            "fats_g": 11
+          },
           "ingredients": [
-            { "name": "Mandorle naturali", "qty": "20g", "category": "dispensa" },
-            { "name": "Mela Golden", "qty": "150g", "category": "frutta_verdura" }
+            {
+              "name": "Mandorle naturali",
+              "qty": "20g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Mela Golden",
+              "qty": "150g",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Consumare 20g di mandorle sgusciate con 150g di mela a fettine sottili."
@@ -853,11 +1544,27 @@
           "subtitle": "Conclusione settimanale semplice e bilanciata",
           "category": "Colazione",
           "kcal": 340,
-          "macros": { "carbs_g": 48, "proteins_g": 13, "fats_g": 10 },
+          "macros": {
+            "carbs_g": 48,
+            "proteins_g": 13,
+            "fats_g": 10
+          },
           "ingredients": [
-            { "name": "Biscotti integrali Grancereale", "qty": "44g", "category": "dispensa" },
-            { "name": "Latte parzialmente scremato", "qty": "200ml", "category": "latticini" },
-            { "name": "Caffè espresso", "qty": "1 tazzina", "category": "dispensa" }
+            {
+              "name": "Biscotti integrali Grancereale",
+              "qty": "44g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Latte parzialmente scremato",
+              "qty": "200ml",
+              "category": "latticini"
+            },
+            {
+              "name": "Caffè espresso",
+              "qty": "1 tazzina",
+              "category": "dispensa"
+            }
           ],
           "recipe_steps": [
             "Riscaldare il latte e versarvi il caffè espresso.",
@@ -874,14 +1581,42 @@
           "subtitle": "Unica frequenza settimanale di affettati magri (100g)",
           "category": "Affettati magri",
           "kcal": 660,
-          "macros": { "carbs_g": 74, "proteins_g": 48, "fats_g": 18.2 },
+          "macros": {
+            "carbs_g": 74,
+            "proteins_g": 48,
+            "fats_g": 18.2
+          },
           "ingredients": [
-            { "name": "Pane integrale casereccio", "qty": "130g", "category": "dispensa" },
-            { "name": "Bresaola della Valtellina IGP", "qty": "100g", "category": "carne" },
-            { "name": "Rucola fresca", "qty": "80g", "category": "frutta_verdura" },
-            { "name": "Pomodoro a fette", "qty": "150g", "category": "frutta_verdura" },
-            { "name": "Olio extravergine d'oliva", "qty": "15g", "category": "condimenti" },
-            { "name": "Succo di limone", "qty": "1 spruzzata", "category": "frutta_verdura" }
+            {
+              "name": "Pane integrale casereccio",
+              "qty": "130g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Bresaola della Valtellina IGP",
+              "qty": "100g",
+              "category": "carne"
+            },
+            {
+              "name": "Rucola fresca",
+              "qty": "80g",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Pomodoro a fette",
+              "qty": "150g",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Olio extravergine d'oliva",
+              "qty": "15g",
+              "category": "condimenti"
+            },
+            {
+              "name": "Succo di limone",
+              "qty": "1 spruzzata",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Tagliare a metà e tostare leggermente i 130g di pane integrale casereccio.",
@@ -900,10 +1635,22 @@
           "subtitle": "Break pomeridiano energizzante",
           "category": "Spuntino",
           "kcal": 170,
-          "macros": { "carbs_g": 24, "proteins_g": 16, "fats_g": 0.8 },
+          "macros": {
+            "carbs_g": 24,
+            "proteins_g": 16,
+            "fats_g": 0.8
+          },
           "ingredients": [
-            { "name": "Yogurt greco 0% naturale", "qty": "150g", "category": "latticini" },
-            { "name": "Kiwi", "qty": "150g", "category": "frutta_verdura" }
+            {
+              "name": "Yogurt greco 0% naturale",
+              "qty": "150g",
+              "category": "latticini"
+            },
+            {
+              "name": "Kiwi",
+              "qty": "150g",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Affettare il kiwi e adagiarlo nello yogurt greco 0%."
@@ -919,13 +1666,37 @@
           "subtitle": "Seconda frequenza di formaggio con 70g di Parmigiano Reggiano stagionato",
           "category": "Formaggi",
           "kcal": 700,
-          "macros": { "carbs_g": 84, "proteins_g": 31, "fats_g": 26 },
+          "macros": {
+            "carbs_g": 84,
+            "proteins_g": 31,
+            "fats_g": 26
+          },
           "ingredients": [
-            { "name": "Gnocchi di patate freschi", "qty": "200g a crudo", "category": "dispensa" },
-            { "name": "Parmigiano Reggiano DOP stagionato a scaglie", "qty": "70g", "category": "latticini" },
-            { "name": "Salsa di pomodoro fresco e basilico", "qty": "100g", "category": "dispensa" },
-            { "name": "Insalata mista da taglio", "qty": "100g", "category": "frutta_verdura" },
-            { "name": "Olio extravergine d'oliva", "qty": "15g", "category": "condimenti" }
+            {
+              "name": "Gnocchi di patate freschi",
+              "qty": "200g a crudo",
+              "category": "dispensa"
+            },
+            {
+              "name": "Parmigiano Reggiano DOP stagionato a scaglie",
+              "qty": "70g",
+              "category": "latticini"
+            },
+            {
+              "name": "Salsa di pomodoro fresco e basilico",
+              "qty": "100g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Insalata mista da taglio",
+              "qty": "100g",
+              "category": "frutta_verdura"
+            },
+            {
+              "name": "Olio extravergine d'oliva",
+              "qty": "15g",
+              "category": "condimenti"
+            }
           ],
           "recipe_steps": [
             "Lessare i 200g di gnocchi di patate in acqua bollente salata e scolarli appena salgono a galla (circa 2 minuti).",
@@ -944,10 +1715,22 @@
           "subtitle": "Potassio e micronutrienti rilassanti per il weekend",
           "category": "Dopocena",
           "kcal": 190,
-          "macros": { "carbs_g": 21, "proteins_g": 4, "fats_g": 13 },
+          "macros": {
+            "carbs_g": 21,
+            "proteins_g": 4,
+            "fats_g": 13
+          },
           "ingredients": [
-            { "name": "Noci sgusciate", "qty": "20g", "category": "dispensa" },
-            { "name": "Albicocche secche morbide", "qty": "30g (ca. 4 albicocche)", "category": "frutta_verdura" }
+            {
+              "name": "Noci sgusciate",
+              "qty": "20g",
+              "category": "dispensa"
+            },
+            {
+              "name": "Albicocche secche morbide",
+              "qty": "30g (ca. 4 albicocche)",
+              "category": "frutta_verdura"
+            }
           ],
           "recipe_steps": [
             "Accompagnare 20g di noci croccanti con 30g di albicocche secche non zuccherate."
