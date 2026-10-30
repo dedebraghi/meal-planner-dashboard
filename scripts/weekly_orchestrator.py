@@ -6,7 +6,7 @@ Meal Planner Dashboard — Friday Morning Weekly Orchestrator.
 Coordinates the complete end-to-end Friday automation cycle:
 1. Calculates upcoming week date range (Saturday to Friday) & ISO week ID.
 2. Generates/validates weekly meal plan (35 meals, 2063 kcal target, 14 protein slots, Pizza Margherita free meal)
-   using Gemini API (model 'gemini-2.0-flash') or verified Dr. Caglioni seasonal plan.
+   using Gemini API (model 'gemini-3.8-flash') or verified Dr. Caglioni seasonal plan.
 3. Ensures high-resolution WebP dish images in public/recipes/.
 4. Updates src/data/current-week.json with synchronized cart summary.
 5. Populates Esselunga online shopping cart via Playwright (scripts/esselunga_cart_filler.py)
@@ -72,7 +72,12 @@ def setup_logging(log_file: Optional[Path] = None) -> logging.Logger:
         log_file.parent.mkdir(parents=True, exist_ok=True)
 
     logger.setLevel(logging.INFO)
-    logger.handlers.clear()
+    for h in list(logger.handlers):
+        try:
+            h.close()
+        except Exception:
+            pass
+        logger.removeHandler(h)
 
     formatter = logging.Formatter(
         "%(asctime)s [%(levelname)s] %(message)s",
@@ -155,7 +160,7 @@ def generate_weekly_plan(
     """
     Generates genuine weekly meal plan with 35 meals, 2063 kcal target, 14 protein slots,
     and Pizza Margherita free meal on Saturday dinner.
-    Prioritizes Gemini API (model 'gemini-2.0-flash') when GEMINI_API_KEY is available.
+    Prioritizes Gemini API (model 'gemini-3.8-flash') when GEMINI_API_KEY is available.
     Falls back to verified Dr. Caglioni seasonal plan when API is unavailable or offline.
     """
     logger.info(f"Generating weekly meal plan for week {week_id} ({week_start.strftime('%Y-%m-%d')} to {week_end.strftime('%Y-%m-%d')})...")
@@ -171,7 +176,7 @@ def generate_weekly_plan(
     gemini_plan = None
     if effective_api_key:
         try:
-            logger.info("Attempting Gemini AI recipe generation via google.genai (model: gemini-2.0-flash)...")
+            logger.info("Attempting Gemini AI recipe generation via google.genai (model: gemini-3.8-flash)...")
             from google import genai
             client = genai.Client(api_key=effective_api_key)
 
@@ -184,7 +189,7 @@ def generate_weekly_plan(
             )
 
             response = client.models.generate_content(
-                model="gemini-2.0-flash",
+                model="gemini-3.8-flash",
                 contents=prompt
             )
             if response and response.text:

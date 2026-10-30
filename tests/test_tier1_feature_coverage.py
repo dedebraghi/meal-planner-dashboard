@@ -392,7 +392,7 @@ class TestTier1Feature16_WeeklyRecipeGeneration(unittest.TestCase):
 
     def test_f16_01_model_is_not_obsolete(self):
         """Must NOT use gemini-2.5-flash or deprecated models per user rule."""
-        model_name = "gemini-2.0-flash"
+        model_name = "gemini-3.8-flash"
         self.assertNotEqual(model_name, "gemini-2.5-flash")
 
     def test_f16_02_generates_thirty_five_meals(self):
