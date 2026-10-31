@@ -31,8 +31,8 @@ export function DayView({ day, onOpenRecipe }: DayViewProps) {
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
-          <MealCard meal={pranzo} isMainMeal={true} onOpenRecipe={onOpenRecipe} />
-          <MealCard meal={cena} isMainMeal={true} onOpenRecipe={onOpenRecipe} />
+          <MealCard key={pranzo.id} meal={pranzo} isMainMeal={true} onOpenRecipe={onOpenRecipe} />
+          <MealCard key={cena.id} meal={cena} isMainMeal={true} onOpenRecipe={onOpenRecipe} />
         </div>
       </section>
 
@@ -53,9 +53,9 @@ export function DayView({ day, onOpenRecipe }: DayViewProps) {
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-12">
-          <MealCard meal={colazione} isMainMeal={false} onOpenRecipe={onOpenRecipe} />
-          <MealCard meal={spuntino_pomeriggio} isMainMeal={false} onOpenRecipe={onOpenRecipe} />
-          <MealCard meal={dopocena} isMainMeal={false} onOpenRecipe={onOpenRecipe} />
+          <MealCard key={colazione.id} meal={colazione} isMainMeal={false} onOpenRecipe={onOpenRecipe} />
+          <MealCard key={spuntino_pomeriggio.id} meal={spuntino_pomeriggio} isMainMeal={false} onOpenRecipe={onOpenRecipe} />
+          <MealCard key={dopocena.id} meal={dopocena} isMainMeal={false} onOpenRecipe={onOpenRecipe} />
         </div>
       </section>
     </div>

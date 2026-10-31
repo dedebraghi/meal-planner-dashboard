@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Utensils, Clock, Flame, ChevronRight, Sparkles } from "lucide-react";
 import { Meal } from "@/types/meal-plan";
@@ -13,6 +13,10 @@ interface MealCardProps {
 
 export function MealCard({ meal, isMainMeal = false, onOpenRecipe }: MealCardProps) {
   const [imgSrc, setImgSrc] = useState<string>(meal.image_url || "/placeholder-dish.svg");
+
+  useEffect(() => {
+    setImgSrc(meal.image_url || "/placeholder-dish.svg");
+  }, [meal.image_url, meal.id]);
 
   const mealTypeLabels: Record<Meal["meal_type"], string> = {
     colazione: "Colazione",

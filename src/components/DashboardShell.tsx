@@ -51,6 +51,7 @@ export function DashboardShell({ initialData }: DashboardShellProps) {
       {/* 4. Active Day Meal Timeline View (5 meals) */}
       <main className="flex-1">
         <DayView
+          key={selectedDay.id}
           day={selectedDay}
           onOpenRecipe={(meal) => setActiveRecipeMeal(meal)}
         />
