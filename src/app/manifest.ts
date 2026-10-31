@@ -1,0 +1,43 @@
+import { MetadataRoute } from "next";
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: "Menù Nutrizionale — Dr.ssa Caglioni",
+    short_name: "Menù Dieta",
+    description: "Piano nutrizionale settimanale, ricette fotografiche e lista della spesa Esselunga",
+    start_url: "/",
+    id: "/",
+    display: "standalone",
+    orientation: "portrait",
+    background_color: "#FAF9F6",
+    theme_color: "#4A6B53",
+    prefer_related_applications: false,
+    categories: ["food", "health", "lifestyle"],
+    icons: [
+      {
+        src: "/icons/icon-192.png",
+        sizes: "192x192",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/icons/icon-192-maskable.png",
+        sizes: "192x192",
+        type: "image/png",
+        purpose: "maskable",
+      },
+      {
+        src: "/icons/icon-512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/icons/icon-512-maskable.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "maskable",
+      },
+    ],
+  };
+}

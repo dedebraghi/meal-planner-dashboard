@@ -150,6 +150,44 @@ def load_current_plan(data_path: Path = CURRENT_WEEK_PATH) -> Optional[Dict[str,
     return None
 
 
+def resolve_gemini_api_key(api_key: Optional[str] = None) -> Optional[str]:
+    """Resolves Gemini API Key from args, environment, local .env, or Organizzatore cartelle config."""
+    if api_key:
+        return api_key.strip()
+    if os.environ.get("GEMINI_API_KEY"):
+        return os.environ.get("GEMINI_API_KEY").strip()
+
+    # Check .env in project root
+    env_file = PROJECT_ROOT / ".env"
+    if env_file.exists():
+        try:
+            for line in env_file.read_text(encoding="utf-8").splitlines():
+                line = line.strip()
+                if line.startswith("GEMINI_API_KEY="):
+                    val = line.split("=", 1)[1].strip().strip('"').strip("'")
+                    if val:
+                        return val
+        except Exception:
+            pass
+
+    # Check Organizzatore cartelle config
+    organizer_dir = PROJECT_ROOT.parent / "Organizzatore cartelle"
+    if organizer_dir.exists():
+        try:
+            sys.path.insert(0, str(organizer_dir))
+            import config as org_config
+            key = org_config.get_api_key()
+            if key:
+                return key
+        except Exception:
+            pass
+        finally:
+            if str(organizer_dir) in sys.path:
+                sys.path.remove(str(organizer_dir))
+
+    return None
+
+
 def generate_weekly_plan(
     week_start: datetime,
     week_end: datetime,
@@ -171,7 +209,7 @@ def generate_weekly_plan(
         raise FileNotFoundError(f"Authoritative meal plan dataset not found at {existing_plan_path}")
 
     # Check for Gemini API Key
-    effective_api_key = api_key or os.environ.get("GEMINI_API_KEY")
+    effective_api_key = resolve_gemini_api_key(api_key)
 
     gemini_plan = None
     if effective_api_key:
