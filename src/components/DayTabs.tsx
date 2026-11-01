@@ -81,8 +81,12 @@ export function DayTabs({ days, selectedDayId, onSelectDay }: DayTabsProps) {
                   {hasFreeMeal && (
                     <span
                       title="Pasto Libero (Pizza Margherita)"
-                      className="h-1.5 w-1.5 rounded-full bg-[#C25E3F]"
-                    />
+                      className={`rounded px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase ${
+                        isSelected ? "bg-[#C25E3F] text-white" : "bg-[#C25E3F]/15 text-[#C25E3F]"
+                      }`}
+                    >
+                      Pizza
+                    </span>
                   )}
                 </div>
                 <span
