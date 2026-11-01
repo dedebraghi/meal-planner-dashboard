@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { WeeklyPlanData, Meal } from "@/types/meal-plan";
+import React, { useState, useEffect } from "react";
+import { WeeklyPlanData, Meal, DayPlan } from "@/types/meal-plan";
 import { Header } from "./Header";
 import { MacroBar } from "./MacroBar";
 import { DayTabs } from "./DayTabs";
@@ -14,13 +14,69 @@ interface DashboardShellProps {
   initialData: WeeklyPlanData;
 }
 
+function getTodayIsoDate(): string {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function resolveTodayDayId(days: DayPlan[]): string {
+  if (!days || days.length === 0) return "sabato-2026-10-31";
+  const todayStr = getTodayIsoDate();
+
+  // 1. Direct match with a date in the current weekly plan
+  const match = days.find((d) => d.date === todayStr);
+  if (match) return match.id;
+
+  // 2. If today is before the first day of the plan
+  if (todayStr < days[0].date) return days[0].id;
+
+  // 3. If today is after the last day of the plan
+  if (todayStr > days[days.length - 1].date) return days[days.length - 1].id;
+
+  return days[0].id;
+}
+
 export function DashboardShell({ initialData }: DashboardShellProps) {
-  const [selectedDayId, setSelectedDayId] = useState<string>(
-    initialData.days[0]?.id || "sabato-2026-10-31"
-  );
+  const [selectedDayId, setSelectedDayId] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      return resolveTodayDayId(initialData.days);
+    }
+    return initialData.days[0]?.id || "sabato-2026-10-31";
+  });
   const [activeRecipeMeal, setActiveRecipeMeal] = useState<Meal | null>(null);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [isDietInfoOpen, setIsDietInfoOpen] = useState<boolean>(false);
+
+  // Automatically advance to today on mount and when app resumes from background
+  useEffect(() => {
+    const syncCurrentDay = () => {
+      const todayId = resolveTodayDayId(initialData.days);
+      if (todayId) {
+        setSelectedDayId(todayId);
+      }
+    };
+
+    // Client mount sync
+    syncCurrentDay();
+
+    // Re-check date if the PWA or browser tab is brought back to foreground
+    const handleVisibility = () => {
+      if (document.visibilityState === "visible") {
+        syncCurrentDay();
+      }
+    };
+
+    window.addEventListener("focus", syncCurrentDay);
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    return () => {
+      window.removeEventListener("focus", syncCurrentDay);
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, [initialData.days]);
 
   const selectedDay =
     initialData.days.find((d) => d.id === selectedDayId) || initialData.days[0];
