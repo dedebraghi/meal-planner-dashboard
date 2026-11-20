@@ -1,7 +1,7 @@
 {
-  "week_id": "2026-W46",
-  "week_start": "2026-11-14",
-  "week_end": "2026-11-20",
+  "week_id": "2026-W47",
+  "week_start": "2026-11-21",
+  "week_end": "2026-11-27",
   "macro_target": {
     "kcal": 2063,
     "carbs_g": 251,
@@ -15,7 +15,7 @@
     "discount_eur": 17.0,
     "items_count": 42,
     "cart_url": "https://spesaonline.esselunga.it/commerce/nav/supermercato/carrello",
-    "last_updated": "2026-11-13T07:00:11Z",
+    "last_updated": "2026-11-20T07:03:59Z",
     "store": "Esselunga Locker Via Adriano 81, Milano",
     "order_number": "157049848",
     "pickup_slot": "Sabato 31/10/2026, ore 08:00 - 11:30",
@@ -267,7 +267,7 @@
     {
       "id": "sabato-2026-10-31",
       "day_name": "Sabato",
-      "date": "2026-11-14",
+      "date": "2026-11-21",
       "daily_macros": {
         "kcal": 2060,
         "proteins_g": 92,
@@ -468,7 +468,7 @@
     {
       "id": "domenica-2026-11-01",
       "day_name": "Domenica",
-      "date": "2026-11-15",
+      "date": "2026-11-22",
       "daily_macros": {
         "kcal": 2063,
         "proteins_g": 112,
@@ -683,7 +683,7 @@
     {
       "id": "lunedi-2026-11-02",
       "day_name": "Lunedì",
-      "date": "2026-11-16",
+      "date": "2026-11-23",
       "daily_macros": {
         "kcal": 2063,
         "proteins_g": 100,
@@ -913,7 +913,7 @@
     {
       "id": "martedi-2026-11-03",
       "day_name": "Martedì",
-      "date": "2026-11-17",
+      "date": "2026-11-24",
       "daily_macros": {
         "kcal": 2063,
         "proteins_g": 106,
@@ -1142,7 +1142,7 @@
     {
       "id": "mercoledi-2026-11-04",
       "day_name": "Mercoledì",
-      "date": "2026-11-18",
+      "date": "2026-11-25",
       "daily_macros": {
         "kcal": 2063,
         "proteins_g": 104,
@@ -1361,7 +1361,7 @@
     {
       "id": "giovedi-2026-11-05",
       "day_name": "Giovedì",
-      "date": "2026-11-19",
+      "date": "2026-11-26",
       "daily_macros": {
         "kcal": 2063,
         "proteins_g": 104,
@@ -1589,7 +1589,7 @@
     {
       "id": "venerdi-2026-11-06",
       "day_name": "Venerdì",
-      "date": "2026-11-20",
+      "date": "2026-11-27",
       "daily_macros": {
         "kcal": 2063,
         "proteins_g": 112,
